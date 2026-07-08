@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const appJsCode = `// App.js — This resume's actual routing and GA4 tracking architecture
 import React, { Suspense, lazy, useEffect } from 'react';
@@ -132,6 +133,7 @@ const AWS = lazy(() => import('./components/skills/aws'));
 // aws.[hash].chunk.js   —  9 KB  (loaded only on /skills/aws)`;
 
 const ReactComponent = () => {
+  useDocTitle('React');
   const [activeTab, setActiveTab] = useState('app');
 
   return (
@@ -164,16 +166,16 @@ const ReactComponent = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>This Resume's Architecture</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>React Router v6</strong> — Nested routes, data-driven route generation
+            <strong style={{ color: 'var(--accent-soft)' }}>React Router v6</strong> — Nested routes, data-driven route generation
             from <code>skillsConfig.js</code>, and a <code>useLocation</code> hook to fire GA4 page-view events on every
             navigation without a full page reload.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Code splitting</strong> — Every skill page is a separate webpack chunk loaded
+            <strong style={{ color: 'var(--accent-soft)' }}>Code splitting</strong> — Every skill page is a separate webpack chunk loaded
             on demand via <code>React.lazy()</code>. The initial bundle stays small regardless of how many skill pages exist.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>CSS Modules</strong> — Scoped class names prevent style collisions between components.
+            <strong style={{ color: 'var(--accent-soft)' }}>CSS Modules</strong> — Scoped class names prevent style collisions between components.
             The shared <code>SkillPage.module.css</code> provides a consistent design system across all 23 skill pages.
           </p>
           <div className={styles.tipBox}>

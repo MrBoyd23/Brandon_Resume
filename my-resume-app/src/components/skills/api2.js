@@ -117,7 +117,7 @@ const WeatherComponent = () => {
             <h2 style={{
               margin: '0 0 4px',
               fontSize: '1.15rem',
-              fontFamily: "'Playfair Display', serif",
+              fontFamily: "var(--font-display)",
               fontWeight: 600,
               color: '#ffffff',
               whiteSpace: 'nowrap',

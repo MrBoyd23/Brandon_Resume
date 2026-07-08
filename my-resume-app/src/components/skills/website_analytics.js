@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const indexHtmlCode = `<!-- index.html — GA4 script tag in the <head> -->
 <!-- Measurement ID is injected at build time from environment variable -->
@@ -143,6 +144,7 @@ export function trackOutboundLink(url, linkText) {
 }`;
 
 const Website_Analytics = () => {
+  useDocTitle('Website Analytics');
   const [activeTab, setActiveTab] = useState('indexhtml');
 
   return (
@@ -176,18 +178,18 @@ const Website_Analytics = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>SPA Analytics Challenges</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>The SPA problem</strong> — Single-page apps never fully reload the
+            <strong style={{ color: 'var(--accent-soft)' }}>The SPA problem</strong> — Single-page apps never fully reload the
             page, so the standard GA4 snippet only fires once on the initial page load. Every subsequent React Router
             navigation is invisible to analytics without custom instrumentation.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>The solution</strong> — A <code>useEffect</code> hook that depends
+            <strong style={{ color: 'var(--accent-soft)' }}>The solution</strong> — A <code>useEffect</code> hook that depends
             on React Router's <code>useLocation</code>. Every time the location object changes (route change),
             the hook fires <code>gtag('config', ...)</code> with the new <code>page_path</code>, telling GA4 to
             record a new page view.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Why it matters</strong> — Without this, GA4 reports 100% single-page
+            <strong style={{ color: 'var(--accent-soft)' }}>Why it matters</strong> — Without this, GA4 reports 100% single-page
             sessions with a 100% bounce rate, zero skill page views, and no conversion data. Useless for understanding
             how users navigate the site.
           </p>

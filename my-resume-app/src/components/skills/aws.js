@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const s3HostingCode = `#!/bin/bash
 # Deploy static site to S3 + CloudFront + Route 53
@@ -110,6 +111,7 @@ aws route53 list-resource-record-sets \\
   --query "ResourceRecordSets[?Name=='resume.brandonaboyd.com.']"`;
 
 const AWS = () => {
+  useDocTitle('AWS');
   const [activeTab, setActiveTab] = useState('s3');
 
   return (
@@ -143,19 +145,19 @@ const AWS = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Key Services I Work With</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>EC2</strong> — Instance lifecycle management, EBS volume expansion,
+            <strong style={{ color: 'var(--accent-soft)' }}>EC2</strong> — Instance lifecycle management, EBS volume expansion,
             security group rule updates, AMI snapshots for pre-maintenance backups.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>S3</strong> — Static site hosting, bucket policy management, lifecycle rules
+            <strong style={{ color: 'var(--accent-soft)' }}>S3</strong> — Static site hosting, bucket policy management, lifecycle rules
             for log archiving, cross-account replication for DR.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>CloudWatch</strong> — Custom metric alarms, log group subscriptions,
+            <strong style={{ color: 'var(--accent-soft)' }}>CloudWatch</strong> — Custom metric alarms, log group subscriptions,
             composite alarms for multi-condition alerting, dashboards for team operations.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>IAM</strong> — Role-based access for EC2 and Lambda, policy auditing,
+            <strong style={{ color: 'var(--accent-soft)' }}>IAM</strong> — Role-based access for EC2 and Lambda, policy auditing,
             permission boundary enforcement, cross-account role trust relationships.
           </p>
           <div className={styles.tipBox}>

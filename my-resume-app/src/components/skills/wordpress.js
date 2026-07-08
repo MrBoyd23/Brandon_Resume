@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const malwareRemediationCode = `#!/bin/bash
 # WordPress malware remediation workflow using WP-CLI
@@ -116,6 +117,7 @@ wp config set WP_DEBUG_DISPLAY false --raw --path="$SITE"
 wp config set WP_MEMORY_LIMIT '256M' --path="$SITE"`;
 
 const WordPress = () => {
+  useDocTitle('WordPress');
   const [plugins, setPlugins] = useState([]);
   const [pluginsLoading, setPluginsLoading] = useState(true);
   const [pluginsError, setPluginsError] = useState(null);
@@ -192,16 +194,16 @@ const WordPress = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Common Incident Types</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Malware / compromise</strong> — Injected PHP in theme files or
+            <strong style={{ color: 'var(--accent-soft)' }}>Malware / compromise</strong> — Injected PHP in theme files or
             <code> wp-content/uploads</code>. Detected via <code>wp core verify-checksums</code> and file modification
             timestamps. Remediated with full credential reset, file cleanup, and permission hardening.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>White Screen of Death</strong> — Almost always a PHP fatal error.
+            <strong style={{ color: 'var(--accent-soft)' }}>White Screen of Death</strong> — Almost always a PHP fatal error.
             Diagnosed via PHP error log + WP-CLI plugin deactivation to isolate the offending plugin.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Database connection errors</strong> — Wrong credentials in
+            <strong style={{ color: 'var(--accent-soft)' }}>Database connection errors</strong> — Wrong credentials in
             <code> wp-config.php</code> after a migration, or MySQL max_connections exceeded. Fixed via WP-CLI config
             update or direct MySQL intervention.
           </p>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import f from '../../css/HTML.module.css';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const MAX_MESSAGE = 1200;
 
@@ -16,6 +17,7 @@ const INITIAL_FORM = {
 };
 
 const ContactForm = () => {
+    useDocTitle('HTML');
     const [formData, setFormData] = useState(INITIAL_FORM);
     const [captchaToken, setCaptchaToken] = useState('');
     const [submitting, setSubmitting] = useState(false);
@@ -267,7 +269,7 @@ const ContactForm = () => {
                             <span>
                                 <strong>Something went wrong.</strong><br />
                                 Please try again or email me directly at{' '}
-                                <a href="mailto:flossmore@brandonaboyd.com" style={{ color: '#93c5fd' }}>
+                                <a href="mailto:flossmore@brandonaboyd.com" style={{ color: 'var(--accent-soft)' }}>
                                     flossmore@brandonaboyd.com
                                 </a>
                             </span>

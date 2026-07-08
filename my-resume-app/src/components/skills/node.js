@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const expressServerCode = `// server.js — Express health-check API
 // Pattern used in this resume's contact form backend
@@ -118,6 +119,7 @@ pm2 save
 pm2 startup systemd`;
 
 const Node = () => {
+  useDocTitle('Node.js');
   const [activeTab, setActiveTab] = useState('express');
 
   return (
@@ -150,17 +152,17 @@ const Node = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Key Patterns</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>PM2 cluster mode</strong> — Running Node apps with multiple workers
+            <strong style={{ color: 'var(--accent-soft)' }}>PM2 cluster mode</strong> — Running Node apps with multiple workers
             across all available CPU cores. Zero-downtime reloads (<code>pm2 reload</code>) deploy code changes without
             dropping connections — critical for production API servers.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Graceful shutdown</strong> — Listening for <code>SIGTERM</code> to drain
+            <strong style={{ color: 'var(--accent-soft)' }}>Graceful shutdown</strong> — Listening for <code>SIGTERM</code> to drain
             in-flight requests before exiting. Kubernetes and PM2 both send SIGTERM before SIGKILL — handling it properly
             prevents dropped connections during deploys.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Input validation</strong> — Never trusting client-submitted data. Every
+            <strong style={{ color: 'var(--accent-soft)' }}>Input validation</strong> — Never trusting client-submitted data. Every
             API endpoint validates required fields, sanitizes inputs, and returns structured error responses.
           </p>
           <div className={styles.tipBox}>

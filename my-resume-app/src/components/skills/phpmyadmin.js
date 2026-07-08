@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const auditQueriesCode = `-- Emergency DB audit queries run via phpMyAdmin SQL editor
 -- Used during customer migration to identify issues before transfer
@@ -65,6 +66,7 @@ grep -c "INSERT INTO" selective_export_*.sql
 mysql -u root -p customer_db < selective_export_20250115.sql`;
 
 const PhpMyAdmin = () => {
+  useDocTitle('phpMyAdmin');
   const [activeTab, setActiveTab] = useState('audit');
 
   return (
@@ -98,12 +100,12 @@ const PhpMyAdmin = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>When I Reach for phpMyAdmin vs CLI</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>phpMyAdmin is faster for:</strong> Browsing table structures and row data,
+            <strong style={{ color: 'var(--accent-soft)' }}>phpMyAdmin is faster for:</strong> Browsing table structures and row data,
             visual comparison of tables, quick exports of specific tables, verifying import results, and diagnosing
             WordPress option misconfigurations (<code>siteurl</code>, <code>home</code>).
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>CLI is better for:</strong> Large imports (&gt;100MB), scripted operations,
+            <strong style={{ color: 'var(--accent-soft)' }}>CLI is better for:</strong> Large imports (&gt;100MB), scripted operations,
             bulk operations across multiple databases, and anything that needs to be repeatable or auditable.
           </p>
           <p className={styles.sectionText}>

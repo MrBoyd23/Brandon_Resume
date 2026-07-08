@@ -1,0 +1,15 @@
+# Build output & dependencies
+build/
+coverage/
+node_modules/
+server/node_modules/
+
+# Generated / vendored assets
+public/
+*.min.js
+*.min.css
+package-lock.json
+
+# Generated resume documents
+*.pdf
+*.docx

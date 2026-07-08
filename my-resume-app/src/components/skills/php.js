@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const phpIniCode = `; /etc/php/8.2/fpm/php.ini — Production tuning
 memory_limit = 256M
@@ -61,6 +62,7 @@ slowlog = /var/log/php8.2-fpm-slow.log
 request_slowlog_timeout = 5s`;
 
 const PHP = () => {
+  useDocTitle('PHP');
   const [activeTab, setActiveTab] = useState('ini');
 
   return (
@@ -107,17 +109,17 @@ const PHP = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Common Incident Patterns</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Fatal error: Allowed memory size exhausted</strong> — The most frequent PHP ticket.
+            <strong style={{ color: 'var(--accent-soft)' }}>Fatal error: Allowed memory size exhausted</strong> — The most frequent PHP ticket.
             Caused by a WordPress plugin loading too much data. Fix: increase <code>memory_limit</code> in <code>php.ini</code> or
             the site's <code>wp-config.php</code> (<code>define('WP_MEMORY_LIMIT', '256M')</code>).
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Max execution time exceeded</strong> — Long-running WooCommerce imports
+            <strong style={{ color: 'var(--accent-soft)' }}>Max execution time exceeded</strong> — Long-running WooCommerce imports
             or backup plugins hitting the default 30-second limit. I identify the offending process via FPM slow logs and
             tune <code>max_execution_time</code> for the specific pool, not globally.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>PHP version mismatch</strong> — Plugin requiring PHP 8.0+ running on 7.4.
+            <strong style={{ color: 'var(--accent-soft)' }}>PHP version mismatch</strong> — Plugin requiring PHP 8.0+ running on 7.4.
             I use <code>update-alternatives</code> to switch CLI and coordinate FPM pool changes to avoid downtime.
           </p>
           <div className={styles.tipBox}>

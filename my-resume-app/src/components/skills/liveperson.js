@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const botIntentCode = `// HelpBot intent configuration — LivePerson Bot Studio
 // Handles Tier-1 agent questions about common hosting issues
@@ -143,6 +144,7 @@ const routingRulesCode = `// LiveEngage routing rules — skill-based chat routi
 }`;
 
 const LivePerson = () => {
+  useDocTitle('LivePerson');
   const [activeTab, setActiveTab] = useState('bot');
 
   return (
@@ -181,12 +183,12 @@ const LivePerson = () => {
             a structured answer with diagnostic steps in under 2 seconds.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Intents I built:</strong> DNS propagation troubleshooting, WordPress
+            <strong style={{ color: 'var(--accent-soft)' }}>Intents I built:</strong> DNS propagation troubleshooting, WordPress
             500 errors and WSOD, SSL certificate issues, email delivery failures, PHP memory exhaustion,
             cPanel/WHM navigation questions, and domain transfer status.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Routing architecture:</strong> Customer chats are first routed to
+            <strong style={{ color: 'var(--accent-soft)' }}>Routing architecture:</strong> Customer chats are first routed to
             HelpBot for Tier-1 containment. Unresolved issues fall through to human agents in the appropriate skill queue,
             with HelpBot's transcript attached so agents have full context.
           </p>

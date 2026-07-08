@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { codingSkills, softwareSkills } from '../data/skillsConfig';
+import useDocTitle from '../hooks/useDocTitle';
 
 const sectionStyle = {
   background: '#0d0d0d',
@@ -12,7 +13,7 @@ const sectionStyle = {
 };
 
 const headingStyle = {
-  fontFamily: "'Playfair Display', serif",
+  fontFamily: "var(--font-display)",
   fontSize: '1.1rem',
   color: '#fff',
   margin: '0 0 14px',
@@ -35,15 +36,17 @@ const linkStyle = {
   color: '#fff',
   textDecoration: 'none',
   fontSize: '0.8rem',
-  fontFamily: "'Poppins', sans-serif",
+  fontFamily: "var(--font-body)",
   textAlign: 'center',
   transition: 'all 0.2s',
 };
 
-const NotFound = () => (
+const NotFound = () => {
+  useDocTitle('Page Not Found');
+  return (
   <div style={{ width: '100%', padding: '20px 0' }}>
     <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-      <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '3rem', color: '#60a5fa', margin: '0 0 8px' }}>
+      <h1 style={{ fontFamily: "var(--font-display)", fontSize: '3rem', color: '#60a5fa', margin: '0 0 8px' }}>
         404
       </h1>
       <p style={{ color: '#aaa', fontSize: '1rem', margin: '0 0 6px' }}>
@@ -58,8 +61,8 @@ const NotFound = () => (
       <h2 style={headingStyle}>Main Sections</h2>
       <div style={linkGridStyle}>
         <Link to="/" style={linkStyle}>Home</Link>
-        <Link to="/Experience" style={linkStyle}>Experience</Link>
-        <Link to="/Education" style={linkStyle}>Education</Link>
+        <Link to="/experience" style={linkStyle}>Experience</Link>
+        <Link to="/education" style={linkStyle}>Education</Link>
       </div>
     </div>
 
@@ -81,6 +84,7 @@ const NotFound = () => (
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export default NotFound;

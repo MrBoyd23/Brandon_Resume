@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import '../../css/styles.css'; // Ensure this is the path to your global styles
+import useDocTitle from '../../hooks/useDocTitle';
 
 const Ansible = () => {
+    useDocTitle('Ansible');
     const [playbooks, setPlaybooks] = useState([]);
     const [selectedPlaybookContent, setSelectedPlaybookContent] = useState(null);
 

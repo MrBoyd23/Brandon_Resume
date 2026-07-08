@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const robotsTxtCode = `# robots.txt — resume.brandonaboyd.com
 # Instructs crawlers on what to index and what to skip
@@ -100,6 +101,7 @@ Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>`;
 
 const SEO = () => {
+  useDocTitle('SEO');
   const [activeTab, setActiveTab] = useState('robots');
 
   return (
@@ -133,16 +135,16 @@ const SEO = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Technical SEO Checklist</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>HTTPS + HSTS</strong> — 301 redirect from HTTP, non-www canonical,
+            <strong style={{ color: 'var(--accent-soft)' }}>HTTPS + HSTS</strong> — 301 redirect from HTTP, non-www canonical,
             HSTS header with <code>includeSubDomains</code> and <code>preload</code>. Verified with Chrome DevTools
             and <code>curl -I</code>.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Crawl budget</strong> — <code>robots.txt</code> blocking admin pages,
+            <strong style={{ color: 'var(--accent-soft)' }}>Crawl budget</strong> — <code>robots.txt</code> blocking admin pages,
             search results, and tag archives. Only indexable, canonical content gets crawler access.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Core Web Vitals</strong> — LCP under 2.5s via image optimization and
+            <strong style={{ color: 'var(--accent-soft)' }}>Core Web Vitals</strong> — LCP under 2.5s via image optimization and
             preloading, CLS near zero by setting explicit image dimensions, FID/INP low via deferring non-critical JS.
           </p>
           <div className={styles.tipBox}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import useDocTitle from '../../hooks/useDocTitle';
 
 /**
  * SkillDetail — generic placeholder for skills that don't yet have
@@ -7,6 +8,7 @@ import React from 'react';
  * CUSTOM_SKILL_IDS in src/data/skillsConfig.js.
  */
 const SkillDetail = ({ name }) => {
+  useDocTitle(name);
   return (
     <div style={{ padding: '20px', textAlign: 'center' }}>
       <h2>{name}</h2>

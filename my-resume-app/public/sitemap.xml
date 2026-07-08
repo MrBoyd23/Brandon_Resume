@@ -3,186 +3,236 @@
 
   <!-- Main sections -->
   <url>
-    <loc>https://Resume.BrandonABoyd.com/</loc>
+    <loc>https://resume.brandonaboyd.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/Experience</loc>
+    <loc>https://resume.brandonaboyd.com/experience</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/Education</loc>
+    <loc>https://resume.brandonaboyd.com/education</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/coding</loc>
+    <loc>https://resume.brandonaboyd.com/coding</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/Software</loc>
+    <loc>https://resume.brandonaboyd.com/software</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Coding skill pages -->
   <url>
-    <loc>https://Resume.BrandonABoyd.com/apache</loc>
+    <loc>https://resume.brandonaboyd.com/apache</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/php</loc>
+    <loc>https://resume.brandonaboyd.com/php</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/css</loc>
+    <loc>https://resume.brandonaboyd.com/css</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/api</loc>
+    <loc>https://resume.brandonaboyd.com/api</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/aws</loc>
+    <loc>https://resume.brandonaboyd.com/aws</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/html</loc>
+    <loc>https://resume.brandonaboyd.com/html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/mysql</loc>
+    <loc>https://resume.brandonaboyd.com/mysql</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/ansible</loc>
+    <loc>https://resume.brandonaboyd.com/ansible</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/python</loc>
+    <loc>https://resume.brandonaboyd.com/python</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/node</loc>
+    <loc>https://resume.brandonaboyd.com/node</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/react</loc>
+    <loc>https://resume.brandonaboyd.com/react</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/javascript</loc>
+    <loc>https://resume.brandonaboyd.com/javascript</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/web_design</loc>
+    <loc>https://resume.brandonaboyd.com/web_design</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/phpmyadmin</loc>
+    <loc>https://resume.brandonaboyd.com/phpmyadmin</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/bash_scripting</loc>
+    <loc>https://resume.brandonaboyd.com/bash_scripting</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/ai_development</loc>
+    <loc>https://resume.brandonaboyd.com/ai_development</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://resume.brandonaboyd.com/nginx</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://resume.brandonaboyd.com/express</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://resume.brandonaboyd.com/mssql</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://resume.brandonaboyd.com/github_workflows</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Software skill pages -->
   <url>
-    <loc>https://Resume.BrandonABoyd.com/cpanel</loc>
+    <loc>https://resume.brandonaboyd.com/cpanel</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/plesk</loc>
+    <loc>https://resume.brandonaboyd.com/plesk</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/seo</loc>
+    <loc>https://resume.brandonaboyd.com/seo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/jira</loc>
+    <loc>https://resume.brandonaboyd.com/jira</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/github</loc>
+    <loc>https://resume.brandonaboyd.com/github</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/grafana</loc>
+    <loc>https://resume.brandonaboyd.com/grafana</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/prometheus</loc>
+    <loc>https://resume.brandonaboyd.com/prometheus</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/servicenow</loc>
+    <loc>https://resume.brandonaboyd.com/servicenow</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/liveperson</loc>
+    <loc>https://resume.brandonaboyd.com/liveperson</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/wordpress</loc>
+    <loc>https://resume.brandonaboyd.com/wordpress</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/e-commerce</loc>
+    <loc>https://resume.brandonaboyd.com/e-commerce</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/linux_admin</loc>
+    <loc>https://resume.brandonaboyd.com/linux_admin</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/website_analytics</loc>
+    <loc>https://resume.brandonaboyd.com/website_analytics</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/online_marketing</loc>
+    <loc>https://resume.brandonaboyd.com/online_marketing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://Resume.BrandonABoyd.com/data_analytics</loc>
+    <loc>https://resume.brandonaboyd.com/data_analytics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://resume.brandonaboyd.com/splunk</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://resume.brandonaboyd.com/cloudflare</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://resume.brandonaboyd.com/iis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://resume.brandonaboyd.com/confluence</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://resume.brandonaboyd.com/kibana</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://resume.brandonaboyd.com/kentik</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

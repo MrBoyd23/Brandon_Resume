@@ -1,64 +1,68 @@
 // src/components/Experience.js
-import React from 'react';
+import React, { useRef } from 'react';
+import useScrollReveal from '../hooks/useScrollReveal';
 
-/**
- * Experience — landing page / home route.
- * Uses global styles from styles.css (.experience, .job, .job-details)
- * which provide the timeline layout, card styling, and hover effects.
- */
-const Experience = () => (
-    <div className="experience">
+const Experience = () => {
+    const timelineRef = useRef(null);
+    useScrollReveal(timelineRef, { selector: '.job' });
+
+    return (
+    <div className="experience" ref={timelineRef}>
         {/* ── Job 1 ─────────────────────────────────────────── */}
-        <div className="job">
+        <div className="job job-current">
             <div className="job-details">
-                <h3>System Engineer III</h3>
-                <p><b>GoDaddy</b></p>
-                <p>February 2025 &ndash; Present</p>
-                <p>Remote</p>
-                <h4>Core Competencies</h4>
+                <h3>System Engineer III<span className="job-badge">Current</span></h3>
+                <p className="job-meta">
+                    <b>GoDaddy</b>
+                    <span className="job-meta-sep">&bull;</span>
+                    February 2025 &ndash; Present
+                    <span className="job-meta-sep">&bull;</span>
+                    <em>Remote</em>
+                </p>
+                <p className="job-section-label">Core Competencies</p>
 
-                <p><strong>Independent Problem Solving &amp; Execution</strong> &mdash;</p>
+                <p className="job-competency">Independent Problem Solving &amp; Execution</p>
                 <ul>
                     <li>Consistently solving complex problems and delivering solutions independently, often serving as a go-to resource for peers facing similar challenges.</li>
                     <li>Operating with a high degree of autonomy, requiring minimal direction on day-to-day work and proactively scoping new assignments.</li>
                 </ul>
 
-                <p><strong>Documentation Excellence</strong> &mdash;</p>
+                <p className="job-competency">Documentation Excellence</p>
                 <ul>
                     <li>Maintaining a strong track record of high-quality ticket documentation, upholding high team standards.</li>
                     <li>Authoring comprehensive documentation across multiple products and platforms, including operational SOPs, developer notes, and Atlassian knowledge base articles.</li>
                 </ul>
 
-                <p><strong>Emerging Leadership</strong> &mdash;</p>
+                <p className="job-competency">Emerging Leadership</p>
                 <ul>
                     <li>Regularly leading standups, team meetings, and cross-functional discussions.</li>
                     <li>Recognized as an emerging leader driving alignment, accountability, and team-wide operational readiness.</li>
                 </ul>
 
-                <p><strong>Continuous Improvement &amp; Innovation</strong> &mdash;</p>
+                <p className="job-competency">Continuous Improvement &amp; Innovation</p>
                 <ul>
                     <li>Championing continuous improvement initiatives, identifying and implementing process enhancements, tooling upgrades, and automation that increased team efficiency.</li>
                     <li>Taking calculated risks and experimenting with new approaches, with a proven history of turning experiments into adopted solutions.</li>
                 </ul>
 
-                <p><strong>Multi-Technology Investigations</strong> &mdash;</p>
+                <p className="job-competency">Multi-Technology Investigations</p>
                 <ul>
                     <li>Investigating and resolving issues of moderate-to-high scope across multiple technologies&mdash;including application infrastructure, networking, databases, and security.</li>
                     <li>Often connecting dots across systems that others miss.</li>
                 </ul>
 
-                <p><strong>Customer-First Mindset</strong> &mdash;</p>
+                <p className="job-competency">Customer-First Mindset</p>
                 <ul>
                     <li>Proactively identifying gaps and problems within area of ownership and driving them to resolution without waiting for escalation.</li>
                     <li>Leading complex, customer-impacting investigations end-to-end, coordinating across teams and delivering root cause analysis with actionable follow-ups.</li>
                 </ul>
 
-                <p><strong>Operational Readiness &amp; Training</strong> &mdash;</p>
+                <p className="job-competency">Operational Readiness &amp; Training</p>
                 <ul>
                     <li>Independently driving operational readiness across the team, including maintaining up-to-date documentation, developing training materials, onboarding new team members, and writing SOPs to standardize processes.</li>
                 </ul>
 
-                <p><strong>Subject Matter Expertise</strong> &mdash;</p>
+                <p className="job-competency">Subject Matter Expertise</p>
                 <ul>
                     <li>Established SME in Incident Management Process and one or more System Operations products/services, regularly consulted by peers and leadership for guidance.</li>
                     <li>Deep experience coordinating and improving incident response workflows over multiple cycles.</li>
@@ -70,9 +74,13 @@ const Experience = () => (
         <div className="job">
             <div className="job-details">
                 <h3>System Engineer II</h3>
-                <p><b>GoDaddy</b></p>
-                <p>July 2021 &ndash; February 2025</p>
-                <p>Remote</p>
+                <p className="job-meta">
+                    <b>GoDaddy</b>
+                    <span className="job-meta-sep">&bull;</span>
+                    July 2021 &ndash; February 2025
+                    <span className="job-meta-sep">&bull;</span>
+                    <em>Remote</em>
+                </p>
                 <ul>
                     <li>Developed Remediation Scripting For Troubleshooting Server Environment</li>
                     <li>Utilized CMDB (Configuration Management Database) with ServiceNow</li>
@@ -105,9 +113,13 @@ const Experience = () => (
         <div className="job">
             <div className="job-details">
                 <h3>System Engineer I</h3>
-                <p><b>GoDaddy</b></p>
-                <p>November 2018 &ndash; July 2021</p>
-                <p>Remote</p>
+                <p className="job-meta">
+                    <b>GoDaddy</b>
+                    <span className="job-meta-sep">&bull;</span>
+                    November 2018 &ndash; July 2021
+                    <span className="job-meta-sep">&bull;</span>
+                    <em>Remote</em>
+                </p>
                 <ul>
                     <li>Incident Management &amp; Alert Monitoring On 100K+ Server Network</li>
                     <li>Identify Trending Incidents, Perform Root Cause Analysis &amp; Implement Process Changes To Reduce &amp; Eliminate Recurrence</li>
@@ -132,9 +144,13 @@ const Experience = () => (
         <div className="job">
             <div className="job-details">
                 <h3>Hosting Technical Lead</h3>
-                <p><b>GoDaddy</b></p>
-                <p>February 2016 &ndash; November 2018</p>
-                <p>Scottsdale, Arizona | Remote</p>
+                <p className="job-meta">
+                    <b>GoDaddy</b>
+                    <span className="job-meta-sep">&bull;</span>
+                    February 2016 &ndash; November 2018
+                    <span className="job-meta-sep">&bull;</span>
+                    <em>Scottsdale, Arizona | Remote</em>
+                </p>
                 <ul>
                     <li>Worked Server/Managed Services Incident Queue</li>
                     <li>Website Security Reviews/Configuration/Analysis</li>
@@ -155,9 +171,13 @@ const Experience = () => (
         <div className="job">
             <div className="job-details">
                 <h3>Subject Matter Expert | Website Security</h3>
-                <p><b>GoDaddy | Sucuri</b></p>
-                <p>August 2015 &ndash; November 2018</p>
-                <p>Scottsdale, Arizona</p>
+                <p className="job-meta">
+                    <b>GoDaddy | Sucuri</b>
+                    <span className="job-meta-sep">&bull;</span>
+                    August 2015 &ndash; November 2018
+                    <span className="job-meta-sep">&bull;</span>
+                    <em>Scottsdale, Arizona</em>
+                </p>
                 <ul>
                     <li>Determined Cost-saving Strategies By Publicizing Internal &amp; New Documentation</li>
                     <li>Subject Matter Expert (Website Security | Sucuri)</li>
@@ -177,9 +197,13 @@ const Experience = () => (
         <div className="job">
             <div className="job-details">
                 <h3>Advanced Hosting IV</h3>
-                <p><b>GoDaddy</b></p>
-                <p>November 2013 &ndash; January 2016</p>
-                <p>Scottsdale, Arizona</p>
+                <p className="job-meta">
+                    <b>GoDaddy</b>
+                    <span className="job-meta-sep">&bull;</span>
+                    November 2013 &ndash; January 2016
+                    <span className="job-meta-sep">&bull;</span>
+                    <em>Scottsdale, Arizona</em>
+                </p>
                 <ul>
                     <li>Tested cPanel And Plesk Releases For Shared Hosting Environment</li>
                     <li>Created Supporting Documentation/Help Articles For Customers/Agents</li>
@@ -194,9 +218,13 @@ const Experience = () => (
         <div className="job">
             <div className="job-details">
                 <h3>Hosting Online Support Team</h3>
-                <p><b>GoDaddy</b></p>
-                <p>February 2008 &ndash; October 2013</p>
-                <p>Scottsdale, Arizona</p>
+                <p className="job-meta">
+                    <b>GoDaddy</b>
+                    <span className="job-meta-sep">&bull;</span>
+                    February 2008 &ndash; October 2013
+                    <span className="job-meta-sep">&bull;</span>
+                    <em>Scottsdale, Arizona</em>
+                </p>
                 <ul>
                     <li>Instrumental In The Creation Of A Team Dedicated To Hosting Support</li>
                     <li>Piloted The Server Support Chat Team</li>
@@ -208,7 +236,9 @@ const Experience = () => (
             </div>
         </div>
 
+
     </div>
-);
+    );
+};
 
 export default Experience;

@@ -1,9 +1,87 @@
 /* ============================================================
    styles.css  —  Global styles for Brandon's Resume
-   Color palette: #0a0f1a bg | #3b82f6 blue accent | #f1f5f9 text
-                  #38bdf8 sky links | #1e293b borders
-                  #0f172a code bg
+   Design tokens live in :root below and are consumed by every
+   stylesheet (global + CSS Modules). Custom properties are NOT
+   module-scoped, so var(--token) resolves everywhere.
+
+   NOTE: token VALUES below are the current (pre-restyle) navy
+   palette — this layer is a parity refactor (THALAB-708). The
+   dark-premium charcoal + gold values are applied by flipping
+   these values in the redesign tickets; components never change.
    ============================================================ */
+
+:root {
+  /* ── Surfaces / depth (dark-premium charcoal) ─────────────── */
+  --bg: #12121f;              /* page background (deepest)        */
+  --surface: #1a1a2e;         /* card surfaces                   */
+  --surface-2: #15151f;       /* darker panels / code background */
+  --surface-3: #20202e;       /* skeleton / loader base          */
+  --surface-accent: #232338;  /* raised / gradient stop          */
+  --border: #2a2a40;          /* default borders                 */
+  --border-2: #37374f;        /* lighter border                  */
+
+  /* ── Text (warm off-white ramp) ───────────────────────────── */
+  --text: #f3f1ea;            /* primary text                    */
+  --text-secondary: #b8b4a8;  /* body paragraphs                 */
+  --text-muted: #9a9484;      /* meta / subtitles                */
+  --text-dim: #83806f;        /* labels / captions               */
+  --white: #fff;
+
+  /* ── Accent (gold) ────────────────────────────────────────── */
+  --accent: #d4a849;
+  --accent-hover: #e4c072;
+  --accent-strong: #c2953a;
+  --accent-soft: #e8d09a;
+  --link: #d8b45f;
+  --link-hover: #eccf8a;
+  --star: #fbbf24;            /* amber (GitHub stars)            */
+  --danger: #f87171;
+
+  /* ── RGB channels for rgba() alpha usage ──────────────────── */
+  --accent-rgb: 212, 168, 73;
+  --link-rgb: 216, 180, 95;
+  --danger-rgb: 239, 68, 68;
+  --text-muted-rgb: 154, 148, 132;
+  --text-rgb: 243, 241, 234;
+  --white-rgb: 255, 255, 255;
+  --shadow-rgb: 0, 0, 0;
+
+  /* ── Radii ────────────────────────────────────────────────── */
+  --radius-2: 2px;
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-pill: 50%;
+
+  /* ── Z-index scale ────────────────────────────────────────── */
+  --z-base: 1;
+  --z-above: 10;
+  --z-header: 100;
+  --z-skip: 9999;
+
+  /* ── Typography: roles (THALAB-709) ───────────────────────── */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;   /* headings / the name */
+  --font-body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;      /* body / UI           */
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace; /* code / metadata     */
+
+  /* ── Type scale (modular) ─────────────────────────────────── */
+  --fs-hero: clamp(2.75rem, 6vw, 4.5rem);   /* the name — commanding presence */
+  --fs-h1: clamp(1.75rem, 3.5vw, 2.25rem);
+  --fs-h2: 1.6rem;
+  --fs-h3: 1.35rem;
+  --fs-lg: 1.1rem;
+  --fs-base: 0.95rem;
+  --fs-sm: 0.85rem;
+  --fs-xs: 0.75rem;
+  --fs-2xs: 0.68rem;
+
+  /* ── Font weights ─────────────────────────────────────────── */
+  --fw-body: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+}
 
 /* Fonts loaded via index.html <link> tags — no @import needed here */
 
@@ -12,10 +90,10 @@
   position: absolute;
   left: -9999px;
   top: 0;
-  z-index: 9999;
+  z-index: var(--z-skip);
   padding: 10px 20px;
-  background: #3b82f6;
-  color: #fff;
+  background: var(--accent);
+  color: var(--white);
   font-size: 0.9rem;
   text-decoration: none;
   border-radius: 0 0 6px 0;
@@ -28,11 +106,11 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: var(--font-body);
   margin: 0;
   padding: 0;
-  background-color: #0a0f1a;
-  color: #f1f5f9;
+  background-color: var(--bg);
+  color: var(--text);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
@@ -45,61 +123,61 @@ body {
   width: 100%;
   padding: 30px 40px;
   box-sizing: border-box;
-  background: #0a0f1a;
+  background: var(--bg);
   margin: 0 auto;
   max-width: 1200px;
 }
 
 /* ── Typography ────────────────────────────────────────────── */
 h1, h2, h3, h4 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-display);
   margin-top: 0;
 }
 
 h2, .container h2 {
   font-size: 1.6rem;
   margin-bottom: 14px;
-  color: #f1f5f9;
-  border-bottom: 2px solid #3b82f6;
+  color: var(--text);
+  border-bottom: 2px solid var(--accent);
   display: inline-block;
   padding-bottom: 6px;
   letter-spacing: 0.5px;
 }
 
 p, .container p {
-  color: #cbd5e1;
+  color: var(--text-secondary);
   line-height: 1.75;
   margin: 8px 0;
-  font-family: 'Poppins', Arial;
+  font-family: var(--font-body);
   font-size: 0.92rem;
 }
 
 a {
-  color: #38bdf8;
+  color: var(--link);
   transition: color 0.2s;
 }
-a:hover { color: #7dd3fc; }
+a:hover { color: var(--link-hover); }
 
 /* ── Buttons ───────────────────────────────────────────────── */
 button {
   padding: 8px 16px;
   font-size: 0.82rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-weight: 500;
   margin: 5px;
-  border: 1px solid #3b82f6;
-  background: linear-gradient(135deg, #0f172a, #1e3a5f);
-  color: #f1f5f9;
+  border: 1px solid var(--accent);
+  background: linear-gradient(135deg, var(--surface-2), var(--surface-accent));
+  color: var(--text);
   cursor: pointer;
   transition: all 0.25s ease;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   letter-spacing: 0.3px;
 }
 
 button:hover {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
-  border-color: #60a5fa;
-  box-shadow: 0 2px 12px rgba(59,130,246,0.3);
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+  border-color: var(--accent-hover);
+  box-shadow: 0 2px 12px rgba(var(--accent-rgb),0.3);
   transform: translateY(-1px);
 }
 
@@ -129,13 +207,13 @@ ul li {
   margin: 6px 0;
   padding-left: 22px;
   text-indent: -22px;
-  color: #cbd5e1;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 ul li::before {
   content: '▸';
-  color: #38bdf8;
+  color: var(--link);
   display: inline-block;
   width: 22px;
   font-size: 0.75rem;
@@ -156,16 +234,16 @@ ul li::before {
   top: 10px;
   bottom: 10px;
   width: 2px;
-  background: linear-gradient(to bottom, #3b82f6, #1e3a5f);
-  border-radius: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--surface-accent));
+  border-radius: var(--radius-2);
 }
 
 /* ── Job cards ─────────────────────────────────────────────── */
 .job {
   position: relative;
-  background: #111827;
-  border: 1px solid #1e293b;
-  border-left: 3px solid #3b82f6;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
   border-radius: 0 10px 10px 0;
   padding: 24px 28px;
   margin-bottom: 24px;
@@ -173,8 +251,8 @@ ul li::before {
 }
 
 .job:hover {
-  border-left-color: #60a5fa;
-  box-shadow: 0 4px 24px rgba(59,130,246,0.12);
+  border-left-color: var(--accent-hover);
+  box-shadow: 0 4px 24px rgba(var(--accent-rgb),0.12);
 }
 
 /* Timeline dot */
@@ -185,31 +263,53 @@ ul li::before {
   top: 28px;
   width: 10px;
   height: 10px;
-  border-radius: 50%;
-  background: #3b82f6;
-  border: 2px solid #0a0f1a;
-  box-shadow: 0 0 0 2px #3b82f6;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
 .job h3 {
   margin: 0 0 4px;
   font-size: 1.35rem;
-  color: #f1f5f9;
-  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  font-family: var(--font-display);
   font-weight: 600;
 }
 
-.job-details p {
-  margin: 3px 0;
-  font-size: 0.875rem;
-  color: #60a5fa;
-  font-family: 'Poppins', sans-serif;
+.job-meta {
+  margin: 4px 0 12px;
+  font-size: 0.85rem;
+  color: var(--accent-hover);
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.job-meta b { color: var(--text); font-weight: 600; }
+.job-meta em { color: var(--text-muted); font-style: italic; }
+.job-meta-sep { color: var(--accent); margin: 0 2px; font-size: 0.6rem; vertical-align: middle; }
+
+.job-section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  margin: 16px 0 10px;
+  font-family: var(--font-display);
 }
 
-/* Bold company name stays white */
-.job-details p b {
-  color: #f1f5f9;
-  font-size: 0.95rem;
+.job-competency {
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text);
+  margin: 10px 0 4px;
+  font-family: var(--font-body);
 }
 
 .job ul {
@@ -228,38 +328,38 @@ ul li::before {
 
 .job ul ul li::before {
   content: '◦';
-  color: #3b82f6;
+  color: var(--accent);
 }
 
 /* ── Education & Certifications ─────────────────────────────── */
 .education, .certifications {
   margin-bottom: 30px;
   padding: 24px;
-  background: #111827;
-  border: 1px solid #1e293b;
-  border-left: 3px solid #3b82f6;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
   border-radius: 0 10px 10px 0;
 }
 
 .education p, .certifications p {
-  color: #cbd5e1;
+  color: var(--text-secondary);
 }
 
 .certifications .heading,
 .education .heading {
   font-size: 1.5rem;
-  color: #f1f5f9;
-  border-bottom: 2px solid #38bdf8;
+  color: var(--text);
+  border-bottom: 2px solid var(--link);
   display: inline-block;
   padding-bottom: 5px;
   margin-bottom: 20px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-display);
 }
 
 .certifications .certificationItem {
   margin-bottom: 20px;
   padding-bottom: 16px;
-  border-bottom: 1px solid #1e293b;
+  border-bottom: 1px solid var(--border);
 }
 
 .certifications .certificationItem:last-child {
@@ -269,22 +369,22 @@ ul li::before {
 
 .certifications .certificationTitle {
   font-size: 1.05rem;
-  color: #60a5fa;
+  color: var(--accent-hover);
   margin-bottom: 4px;
   font-weight: 500;
 }
 
 .certifications .issueDate,
 .certifications .issuer {
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 0.875rem;
   margin: 3px 0;
 }
 
-.certifications .issuer a { color: #38bdf8; }
+.certifications .issuer a { color: var(--link); }
 .certifications .issuer a:hover { text-decoration: underline; }
 
-.issuer a { color: #38bdf8; text-decoration: none; }
+.issuer a { color: var(--link); text-decoration: none; }
 .issuer a:hover { text-decoration: underline; }
 
 /* ── Code blocks ───────────────────────────────────────────── */
@@ -293,14 +393,14 @@ ul li::before {
   overflow-x: auto;
   overflow-y: auto;
   max-height: 600px;
-  background: #0f172a;
-  border-radius: 8px;
+  background: var(--surface-2);
+  border-radius: var(--radius);
   padding: 16px;
   margin: 16px 0;
   box-sizing: border-box;
-  font-family: 'Fira Code', monospace;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
-  border: 1px solid #1e293b;
+  border: 1px solid var(--border);
 }
 
 .code-block pre { margin: 0; }
@@ -317,26 +417,26 @@ ul li::before {
 }
 
 .github-code-viewer h2 {
-  color: #f1f5f9;
-  font-family: 'Inter', sans-serif;
-  border-bottom: 2px solid #3b82f6;
+  color: var(--text);
+  font-family: var(--font-display);
+  border-bottom: 2px solid var(--accent);
   padding-bottom: 6px;
   display: inline-block;
   margin-bottom: 8px;
 }
 
-.github-code-viewer p { color: #94a3b8; }
+.github-code-viewer p { color: var(--text-muted); }
 
 /* ── Job details color overrides (non-p elements) ──────────── */
 .experience .job h3,
 .education h3 {
   font-size: 1.35rem;
-  color: #f1f5f9;
+  color: var(--text);
 }
 
 .skills ul li,
 .certifications ul li {
-  color: #cbd5e1;
+  color: var(--text-secondary);
 }
 
 /* ── Responsive ────────────────────────────────────────────── */
@@ -370,4 +470,178 @@ ul li::before {
   .container { max-width: 1400px; }
   h2, .container h2 { font-size: 1.6rem; }
   button { width: auto; }
+}
+
+/* ============================================================
+   Motion system (THALAB-710)
+   Scroll-reveal + entrance animations. Reveal effects are opt-in
+   via .reveal-enabled (added by the useScrollReveal hook), so a
+   JS-less render never leaves content stuck hidden. Everything is
+   disabled under prefers-reduced-motion (guard at the bottom).
+   ============================================================ */
+
+@keyframes bb-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.reveal-enabled [data-reveal],
+.experience.reveal-enabled .job {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-enabled [data-reveal].is-visible,
+.experience.reveal-enabled .job.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Reduced motion: disable all animation/transition site-wide ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-enabled [data-reveal],
+  .experience.reveal-enabled .job {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   Focus visibility (THALAB-711)
+   A single, theme-aware keyboard focus ring on every interactive
+   element. Keyed to --accent, so it follows the gold recolor.
+   The ring shows for keyboard users (:focus-visible) and is
+   suppressed for pointer users — never `outline: none` alone.
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-2);
+}
+
+/* Suppress the ring for mouse/touch focus, keep it for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================================
+   Experience redesign (THALAB-715)
+   Prominent gold timeline, card hierarchy, current-role emphasis,
+   anchored competency headings, custom bullet markers.
+   ============================================================ */
+
+/* Thicker, brighter gold timeline spine */
+.experience {
+  padding-left: 30px;
+}
+.experience::before {
+  left: 3px;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--accent), rgba(var(--accent-rgb), 0.12));
+}
+
+/* Larger timeline nodes — outlined ring for past roles */
+.job::before {
+  left: -34px;
+  top: 26px;
+  width: 15px;
+  height: 15px;
+  background: var(--bg);
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+
+/* Card title dominance + gold company */
+.job h3 {
+  font-size: 1.5rem;
+  letter-spacing: 0.3px;
+}
+.job-meta b {
+  color: var(--accent-soft);
+}
+
+/* Current role: filled node + subtle emphasis */
+.job-current {
+  border-left-width: 4px;
+  background: linear-gradient(120deg, rgba(var(--accent-rgb), 0.06), var(--surface) 55%);
+  box-shadow: 0 6px 30px rgba(var(--shadow-rgb), 0.3);
+}
+.job-current::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 16px rgba(var(--accent-rgb), 0.55);
+}
+
+/* "Current" badge */
+.job-badge {
+  display: inline-block;
+  margin-left: 12px;
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+/* Core-competency subheads: gold left bar + tint, upright weight */
+.job-competency {
+  padding: 6px 0 6px 12px;
+  border-left: 2px solid var(--accent);
+  background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.06), transparent 75%);
+  color: var(--text);
+  font-style: normal;
+  font-weight: var(--fw-semibold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Bullets: gold markers, more breathing room */
+.job ul li {
+  margin-bottom: 9px;
+}
+.job ul li::before {
+  color: var(--accent);
+}
+
+/* ============================================================
+   Education page layout (THALAB-717)
+   Two-column: Education beside Certifications, compact.
+   ============================================================ */
+.education-page {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 30px;
+  align-items: start;
+  width: 100%;
+}
+
+@media (max-width: 820px) {
+  .education-page {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }

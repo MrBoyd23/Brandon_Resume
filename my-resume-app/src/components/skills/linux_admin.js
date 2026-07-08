@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const cpuDiagCode = `#!/bin/bash
 # Production server at 100% CPU — full diagnostic sequence
@@ -114,6 +115,7 @@ nft add rule ip filter INPUT \\
   drop`;
 
 const Linux_Admin = () => {
+  useDocTitle('Linux Admin');
   const [activeTab, setActiveTab] = useState('cpu');
 
   return (
@@ -161,17 +163,17 @@ const Linux_Admin = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Core Competencies</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Process management</strong> — <code>ps</code>, <code>top</code>,
+            <strong style={{ color: 'var(--accent-soft)' }}>Process management</strong> — <code>ps</code>, <code>top</code>,
             <code> htop</code>, <code>lsof</code>, <code>strace</code>, <code>kill</code>/<code>pkill</code>.
             Identifying runaway processes, zombie processes, and memory leaks without rebooting.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Log analysis</strong> — <code>journalctl</code> for systemd services,
+            <strong style={{ color: 'var(--accent-soft)' }}>Log analysis</strong> — <code>journalctl</code> for systemd services,
             <code> tail -f</code> for real-time monitoring, <code>grep</code>/<code>awk</code>/<code>sed</code>
             for log parsing. Correlating events across multiple log sources during incident timelines.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>LVM management</strong> — Extending logical volumes without downtime,
+            <strong style={{ color: 'var(--accent-soft)' }}>LVM management</strong> — Extending logical volumes without downtime,
             creating snapshots before risky operations, managing VG/PV allocation.
           </p>
           <div className={styles.tipBox}>

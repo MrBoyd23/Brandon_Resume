@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const pleskCliCode = `#!/bin/bash
 # Plesk CLI commands for subscription setup, SSL, and hardening
@@ -75,6 +76,7 @@ plesk ext wp-toolkit --backup --instance-id 42 \\
 tail -50 /var/log/plesk/wordpress-toolkit.log`;
 
 const Plesk = () => {
+  useDocTitle('Plesk');
   const [activeTab, setActiveTab] = useState('cli');
 
   return (
@@ -108,17 +110,17 @@ const Plesk = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Key Features I Work With</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>WordPress Toolkit</strong> — The most powerful feature for managed
+            <strong style={{ color: 'var(--accent-soft)' }}>WordPress Toolkit</strong> — The most powerful feature for managed
             WordPress hosting. I use it to apply bulk updates across all WordPress installations on a server,
             check security scores, enable maintenance mode before updates, and create pre-update backups.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Let's Encrypt integration</strong> — Automated certificate provisioning
+            <strong style={{ color: 'var(--accent-soft)' }}>Let's Encrypt integration</strong> — Automated certificate provisioning
             and renewal for all domains on a subscription. I use the Plesk extension CLI to script certificate
             installation across new account setups.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Subscription management</strong> — Creating, modifying, and transferring
+            <strong style={{ color: 'var(--accent-soft)' }}>Subscription management</strong> — Creating, modifying, and transferring
             subscriptions including PHP version selection, disk quota enforcement, and service plan assignment.
           </p>
           <div className={styles.tipBox}>

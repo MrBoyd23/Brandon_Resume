@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const diskMonitorCode = `#!/usr/bin/env python3
 """
@@ -151,6 +152,7 @@ if __name__ == '__main__':
     main()`;
 
 const Python = () => {
+  useDocTitle('Python');
   const [activeTab, setActiveTab] = useState('disk');
 
   return (
@@ -183,16 +185,16 @@ const Python = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Automation Use Cases</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Log parsing</strong> — Regular expressions against Apache/PHP/MySQL logs to
+            <strong style={{ color: 'var(--accent-soft)' }}>Log parsing</strong> — Regular expressions against Apache/PHP/MySQL logs to
             extract error patterns, count occurrences by type, and generate daily summaries sent to the team.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>API integrations</strong> — Using <code>requests</code> to query the
+            <strong style={{ color: 'var(--accent-soft)' }}>API integrations</strong> — Using <code>requests</code> to query the
             ServiceNow REST API for ticket data, the GitHub API for deployment tracking, and Prometheus for metric
             snapshots during incident post-mortems.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Bulk operations</strong> — Scripts that iterate over thousands of cPanel
+            <strong style={{ color: 'var(--accent-soft)' }}>Bulk operations</strong> — Scripts that iterate over thousands of cPanel
             accounts, check specific file conditions, and apply changes — operations that would take hours manually.
           </p>
           <div className={styles.tipBox}>

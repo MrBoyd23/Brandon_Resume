@@ -5,15 +5,15 @@ import styles from '../css/Header.module.css';
 
 const NAV_ITEMS = [
     { to: '/',           label: 'Home',         end: true,  external: false },
-    { to: '/Experience', label: 'Experience',   end: false, external: false },
-    { to: '/Education',  label: 'Education',    end: false, external: false },
+    { to: '/experience', label: 'Experience',   end: false, external: false },
+    { to: '/education',  label: 'Education',    end: false, external: false },
     {
         href: `https://github.com/${process.env.REACT_APP_GITHUB_REPO}`,
         label: 'GitHub Repos',
         external: true,
     },
     {
-        href: '/Brandon_Boyd_Resume.docx',
+        href: '/Brandon_Boyd_Resume.pdf',
         label: 'Download Resume',
         external: true,
         download: true,

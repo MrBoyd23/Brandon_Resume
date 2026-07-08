@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const processlistCode = `-- Find blocking queries and long-running connections
 SHOW FULL PROCESSLIST;
@@ -71,6 +72,7 @@ CHECK TABLE wp_posts;
 OPTIMIZE TABLE wp_posts, wp_postmeta, wp_options;`;
 
 const MySQL = () => {
+  useDocTitle('MySQL');
   const [activeTab, setActiveTab] = useState('process');
 
   return (
@@ -114,16 +116,16 @@ const MySQL = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Incident Patterns</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Too many connections</strong> — A rogue PHP process (often a WP cron job)
+            <strong style={{ color: 'var(--accent-soft)' }}>Too many connections</strong> — A rogue PHP process (often a WP cron job)
             opens hundreds of connections and never releases them. Fix: identify via <code>SHOW PROCESSLIST</code>,
             KILL the offending threads, tune <code>max_connections</code> and <code>wait_timeout</code>.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Table-level lock contention</strong> — Plugins using <code>MyISAM</code>
+            <strong style={{ color: 'var(--accent-soft)' }}>Table-level lock contention</strong> — Plugins using <code>MyISAM</code>
             instead of InnoDB cause full table locks on writes. Fix: convert to InnoDB with <code>ALTER TABLE ... ENGINE=InnoDB</code>.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Replication lag</strong> — I monitor <code>Seconds_Behind_Master</code>
+            <strong style={{ color: 'var(--accent-soft)' }}>Replication lag</strong> — I monitor <code>Seconds_Behind_Master</code>
             on read replicas and identify the binary log position causing delays, adjusting <code>slave_parallel_workers</code>
             to reduce lag.
           </p>
