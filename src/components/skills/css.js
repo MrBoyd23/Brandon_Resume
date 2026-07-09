@@ -13,8 +13,8 @@ const GitHubCodeViewer = () => {
     const [showCode2, setShowCode2] = useState(false);
     const [showCode3, setShowCode3] = useState(false);
 
-    const RAW = process.env.REACT_APP_GITHUB_RAW_BASE;
-    const REPO = process.env.REACT_APP_GITHUB_REPO;
+    const RAW = import.meta.env.REACT_APP_GITHUB_RAW_BASE;
+    const REPO = import.meta.env.REACT_APP_GITHUB_REPO;
     const githubUrl1 = `${RAW}/${REPO}/main/src/css/Header.module.css`;
     const githubUrl2 = `${RAW}/${REPO}/main/src/css/Skills.module.css`;
     const githubUrl3 = `${RAW}/${REPO}/main/src/css/styles.css`;

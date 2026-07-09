@@ -15,8 +15,8 @@ const Bash_Scripting = () => {
     const [showCode3, setShowCode3] = useState(false);
     const [showCode4, setShowCode4] = useState(false);
 
-    const RAW = process.env.REACT_APP_GITHUB_RAW_BASE;
-    const REPO = process.env.REACT_APP_GITHUB_REPO;
+    const RAW = import.meta.env.REACT_APP_GITHUB_RAW_BASE;
+    const REPO = import.meta.env.REACT_APP_GITHUB_REPO;
     const githubUrl1 = `${RAW}/${REPO}/main/scripts/Bash_Scripts/update_playbook_names.sh`;
     const githubUrl2 = `${RAW}/${REPO}/main/scripts/Bash_Scripts/update_bash_script_titles.sh`;
     const githubUrl3 = `${RAW}/${REPO}/main/scripts/Bash_Scripts/nftables_abuse.sh`;

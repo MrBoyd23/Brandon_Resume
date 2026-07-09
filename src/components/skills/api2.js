@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Visual Crossing Weather API — https://www.visualcrossing.com/account/
 // Key stored in REACT_APP_WEATHER_API_KEY (.env)
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+const API_KEY = import.meta.env.REACT_APP_WEATHER_API_KEY;
 
 const cities = [
   { name: 'Phoenix,AZ',     display: 'Phoenix',      state: 'AZ' },

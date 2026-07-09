@@ -241,7 +241,7 @@ const ContactForm = () => {
                     {/* ── reCAPTCHA ── */}
                     <div className={f.captchaRow}>
                         <ReCAPTCHA
-                            sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                            sitekey={import.meta.env.REACT_APP_RECAPTCHA_SITE_KEY}
                             onChange={setCaptchaToken}
                             onExpired={() => setCaptchaToken('')}
                             theme="dark"
