@@ -36,5 +36,8 @@ coverage/
 # Source maps (optional — remove this line if you want source maps committed)
 *.map
 
-#Resume Files
-*.docx
+# Claude Code
+CLAUDE.md
+.claude/
+.playwright-mcp/
+/*.png
