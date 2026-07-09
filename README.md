@@ -9,7 +9,7 @@ Live at **[resume.brandonaboyd.com](https://resume.brandonaboyd.com)**
 
 | Layer | Technology |
 |---|---|
-| Frontend | React 18, React Router v6 |
+| Frontend | React 18, React Router v7 |
 | Styling | CSS Modules + Global CSS |
 | Backend | Express (contact form + API) |
 | Resume Generation | `docx` npm package |
