@@ -1,14 +1,9 @@
 // vite.config.mjs — build tooling migrated from Create React App (react-scripts) → Vite (THALAB-802).
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
-import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 export default defineConfig({
-  plugins: [
-    react(),
-    // Replaces the old CRA config-overrides.js browser fallbacks (buffer/stream/timers).
-    nodePolyfills({ include: ['buffer', 'stream', 'timers'] }),
-  ],
+  plugins: [react()],
   // The CRA codebase puts JSX in .js files; tell esbuild to parse them as JSX.
   esbuild: {
     loader: 'jsx',
