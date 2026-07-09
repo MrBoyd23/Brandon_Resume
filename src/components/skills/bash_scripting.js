@@ -128,7 +128,7 @@ fi
                     <span className={styles.liveDot}></span>
                     Live: Bash Scripts from GitHub
                 </h2>
-                <p className={styles.liveSubtitle}>Click any script below to view the source from MrBoyd23/Projects</p>
+                <p className={styles.liveSubtitle}>Click any script below to view the source from {REPO}</p>
             </div>
 
             {/* Script 1 */}

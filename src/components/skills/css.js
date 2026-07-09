@@ -13,9 +13,11 @@ const GitHubCodeViewer = () => {
     const [showCode2, setShowCode2] = useState(false);
     const [showCode3, setShowCode3] = useState(false);
 
-    const githubUrl1 = 'https://raw.githubusercontent.com/MrBoyd23/Projects/main/my-resume-app/src/css/Header.module.css';
-    const githubUrl2 = 'https://raw.githubusercontent.com/MrBoyd23/Projects/main/my-resume-app/src/css/Skills.css';
-    const githubUrl3 = 'https://raw.githubusercontent.com/MrBoyd23/Projects/main/my-resume-app/src/css/styles.css';
+    const RAW = process.env.REACT_APP_GITHUB_RAW_BASE;
+    const REPO = process.env.REACT_APP_GITHUB_REPO;
+    const githubUrl1 = `${RAW}/${REPO}/main/src/css/Header.module.css`;
+    const githubUrl2 = `${RAW}/${REPO}/main/src/css/Skills.module.css`;
+    const githubUrl3 = `${RAW}/${REPO}/main/src/css/styles.css`;
 
     useEffect(() => {
         const fetchCode = async (url, setter) => {
