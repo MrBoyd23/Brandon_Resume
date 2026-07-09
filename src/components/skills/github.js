@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const deployYmlCode = `# .github/workflows/deploy.yml
 # CI/CD pipeline: test + build + deploy on push to main
@@ -169,12 +168,7 @@ const GitHub = () => {
           The workflow below is the actual <code>deploy.yml</code> that deploys this resume site to AWS S3 + CloudFront
           on every push to main. It runs tests first, then builds and deploys with proper cache headers.
         </p>
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>yaml — .github/workflows/deploy.yml</div>
-          <SyntaxHighlighter language="yaml" style={vscDarkPlus} showLineNumbers>
-            {deployYmlCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename=".github/workflows/deploy.yml" language="yaml" code={deployYmlCode} showLineNumbers />
       </div>
 
       <div className={styles.liveSection}>

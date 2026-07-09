@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const diagnosticCode = `-- MSSQL diagnostic queries — hosting server troubleshooting
 -- Used during incident response to identify database-level issues
@@ -189,12 +188,7 @@ const MSSQL = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>sql — t-sql</div>
-          <SyntaxHighlighter language="sql" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'diagnostic' ? diagnosticCode : activeTab === 'backup' ? backupRestoreCode : performanceCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename="t-sql" language="sql" code={activeTab === 'diagnostic' ? diagnosticCode : activeTab === 'backup' ? backupRestoreCode : performanceCode} showLineNumbers />
       </div>
     </div>
   );

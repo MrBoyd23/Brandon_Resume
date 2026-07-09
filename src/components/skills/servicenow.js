@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const createIncidentCode = `#!/usr/bin/env python3
 """
@@ -211,12 +210,7 @@ const ServiceNow = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>{activeTab === 'create' ? 'python3 — automated incident creation' : 'http — ServiceNow REST API'}</div>
-          <SyntaxHighlighter language={activeTab === 'create' ? 'python' : 'http'} style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'create' ? createIncidentCode : cmdbQueryCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'create' ? 'automated incident creation' : 'ServiceNow REST API'} language={activeTab === 'create' ? 'python' : 'http'} code={activeTab === 'create' ? createIncidentCode : cmdbQueryCode} showLineNumbers />
       </div>
     </div>
   );

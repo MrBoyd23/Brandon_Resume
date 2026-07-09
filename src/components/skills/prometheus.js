@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const scrapeConfigCode = `# prometheus.yml — scrape configuration for adding new servers
 
@@ -294,18 +293,7 @@ const Prometheus = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>
-            {activeTab === 'scrape' ? 'yaml — prometheus.yml' : activeTab === 'onboard' ? 'bash — onboarding script' : 'yaml — rules'}
-          </div>
-          <SyntaxHighlighter
-            language={activeTab === 'onboard' ? 'bash' : 'yaml'}
-            style={vscDarkPlus}
-            showLineNumbers
-          >
-            {activeTab === 'scrape' ? scrapeConfigCode : activeTab === 'onboard' ? nodeExporterCode : activeTab === 'alerts' ? alertRulesCode : recordingRulesCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'scrape' ? 'prometheus.yml' : activeTab === 'onboard' ? 'onboarding script' : 'rules'} language={activeTab === 'onboard' ? 'bash' : 'yaml'} code={activeTab === 'scrape' ? scrapeConfigCode : activeTab === 'onboard' ? nodeExporterCode : activeTab === 'alerts' ? alertRulesCode : recordingRulesCode} showLineNumbers />
       </div>
     </div>
   );

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const promqlCode = `# PromQL queries used in Grafana dashboards for server health monitoring
 
@@ -221,18 +220,7 @@ const Grafana = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>
-            {activeTab === 'promql' ? 'promql' : activeTab === 'panel' ? 'json — grafana panel' : 'yaml — alert rule'}
-          </div>
-          <SyntaxHighlighter
-            language={activeTab === 'promql' ? 'bash' : activeTab === 'panel' ? 'json' : 'yaml'}
-            style={vscDarkPlus}
-            showLineNumbers
-          >
-            {activeTab === 'promql' ? promqlCode : activeTab === 'panel' ? dashboardJsonCode : alertRuleCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'promql' ? 'promql' : activeTab === 'panel' ? 'grafana panel' : 'alert rule'} language={activeTab === 'promql' ? 'bash' : activeTab === 'panel' ? 'json' : 'yaml'} code={activeTab === 'promql' ? promqlCode : activeTab === 'panel' ? dashboardJsonCode : alertRuleCode} showLineNumbers />
       </div>
     </div>
   );

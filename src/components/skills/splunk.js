@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const emailRelayCode = `# Review relayed email through the server network
 # Identify relay abuse, spam sources, and delivery failures
@@ -151,18 +150,7 @@ const Splunk = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>
-            {activeTab === 'email' ? 'spl' : activeTab === 'incident' ? 'spl' : 'xml — dashboard'}
-          </div>
-          <SyntaxHighlighter
-            language={activeTab === 'dashboard' ? 'xml' : 'bash'}
-            style={vscDarkPlus}
-            showLineNumbers
-          >
-            {activeTab === 'email' ? emailRelayCode : activeTab === 'incident' ? incidentSearchCode : dashboardCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'email' ? 'spl' : activeTab === 'incident' ? 'spl' : 'dashboard'} language={activeTab === 'dashboard' ? 'xml' : 'bash'} code={activeTab === 'email' ? emailRelayCode : activeTab === 'incident' ? incidentSearchCode : dashboardCode} showLineNumbers />
       </div>
     </div>
   );

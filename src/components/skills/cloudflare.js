@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const tunnelConfigCode = `# Cloudflare Tunnel — expose local services without port forwarding
 # Used for WeddingSite (RJPJ2020) and Recipes Website
@@ -168,14 +167,7 @@ const Cloudflare = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>
-            {activeTab === 'tunnel' ? 'bash — tunnel setup' : activeTab === 'ratelimit' ? 'cloudflare — waf rules' : 'bash — ddos response'}
-          </div>
-          <SyntaxHighlighter language="bash" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'tunnel' ? tunnelConfigCode : activeTab === 'ratelimit' ? rateLimitCode : ddosTrackingCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'tunnel' ? 'tunnel setup' : activeTab === 'ratelimit' ? 'waf rules' : 'ddos response'} language="bash" code={activeTab === 'tunnel' ? tunnelConfigCode : activeTab === 'ratelimit' ? rateLimitCode : ddosTrackingCode} showLineNumbers />
       </div>
     </div>
   );

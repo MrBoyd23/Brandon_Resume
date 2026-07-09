@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const appJsCode = `// App.js — This resume's actual routing and GA4 tracking architecture
 import React, { Suspense, lazy, useEffect } from 'react';
@@ -202,12 +201,7 @@ const ReactComponent = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>javascript — {activeTab === 'app' ? 'App.js' : activeTab === 'config' ? 'skillsConfig.js' : 'Code splitting'}</div>
-          <SyntaxHighlighter language="javascript" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'app' ? appJsCode : activeTab === 'config' ? skillsConfigCode : lazyLoadCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'app' ? 'App.js' : activeTab === 'config' ? 'skillsConfig.js' : 'Code splitting'} language="javascript" code={activeTab === 'app' ? appJsCode : activeTab === 'config' ? skillsConfigCode : lazyLoadCode} showLineNumbers />
       </div>
     </div>
   );

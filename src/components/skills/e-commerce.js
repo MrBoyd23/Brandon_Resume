@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const mixedContentFixCode = `# Diagnosing and fixing mixed content on a WooCommerce checkout
 
@@ -173,12 +172,7 @@ const ECommerce = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>bash — {activeTab === 'mixed' ? 'WooCommerce HTTPS fix' : activeTab === 'csp' ? 'security headers' : 'PCI compliance checks'}</div>
-          <SyntaxHighlighter language="bash" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'mixed' ? mixedContentFixCode : activeTab === 'csp' ? cspHeadersCode : pciChecklistCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'mixed' ? 'WooCommerce HTTPS fix' : activeTab === 'csp' ? 'security headers' : 'PCI compliance checks'} language="bash" code={activeTab === 'mixed' ? mixedContentFixCode : activeTab === 'csp' ? cspHeadersCode : pciChecklistCode} showLineNumbers />
       </div>
     </div>
   );

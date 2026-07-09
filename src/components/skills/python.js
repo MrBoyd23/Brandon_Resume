@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const diskMonitorCode = `#!/usr/bin/env python3
 """
@@ -222,12 +221,7 @@ const Python = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>python3</div>
-          <SyntaxHighlighter language="python" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'disk' ? diskMonitorCode : subprocessCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename="python3" language="python" code={activeTab === 'disk' ? diskMonitorCode : subprocessCode} showLineNumbers />
       </div>
     </div>
   );

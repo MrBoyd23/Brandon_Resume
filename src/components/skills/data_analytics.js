@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const splunkSplCode = `| --- SPL: Identify and correlate PHP 500 error wave --- |
 
@@ -240,18 +239,7 @@ const Data_Analytics = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>
-            {activeTab === 'python' ? 'python3 — Splunk REST API' : 'spl — Splunk Processing Language'}
-          </div>
-          <SyntaxHighlighter
-            language={activeTab === 'python' ? 'python' : 'bash'}
-            style={vscDarkPlus}
-            showLineNumbers
-          >
-            {activeTab === 'splunk' ? splunkSplCode : activeTab === 'alerts' ? splunkAlertCode : pythonAnalysisCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'python' ? 'Splunk REST API' : 'Splunk Processing Language'} language={activeTab === 'python' ? 'python' : 'bash'} code={activeTab === 'splunk' ? splunkSplCode : activeTab === 'alerts' ? splunkAlertCode : pythonAnalysisCode} showLineNumbers />
       </div>
     </div>
   );

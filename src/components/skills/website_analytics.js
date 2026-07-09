@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const indexHtmlCode = `<!-- index.html — GA4 script tag in the <head> -->
 <!-- Measurement ID is injected at build time from environment variable -->
@@ -218,18 +217,7 @@ const Website_Analytics = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>
-            {activeTab === 'indexhtml' ? 'html — index.html' : 'javascript — ' + (activeTab === 'hook' ? 'App.js' : 'analytics.js')}
-          </div>
-          <SyntaxHighlighter
-            language={activeTab === 'indexhtml' ? 'html' : 'javascript'}
-            style={vscDarkPlus}
-            showLineNumbers
-          >
-            {activeTab === 'indexhtml' ? indexHtmlCode : activeTab === 'hook' ? pageViewHookCode : customEventsCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'indexhtml' ? 'index.html' : (activeTab === 'hook' ? 'App.js' : 'analytics.js')} language={activeTab === 'indexhtml' ? 'html' : 'javascript'} code={activeTab === 'indexhtml' ? indexHtmlCode : activeTab === 'hook' ? pageViewHookCode : customEventsCode} showLineNumbers />
       </div>
     </div>
   );

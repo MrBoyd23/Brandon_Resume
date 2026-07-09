@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const expressServerCode = `// server.js — Express health-check API
 // Pattern used in this resume's contact form backend
@@ -189,12 +188,7 @@ const Node = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>{activeTab === 'express' ? 'javascript — server.js' : 'javascript — ecosystem.config.js'}</div>
-          <SyntaxHighlighter language="javascript" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'express' ? expressServerCode : pm2Code}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'express' ? 'server.js' : 'ecosystem.config.js'} language="javascript" code={activeTab === 'express' ? expressServerCode : pm2Code} showLineNumbers />
       </div>
     </div>
   );

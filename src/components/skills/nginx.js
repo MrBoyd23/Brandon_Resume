@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const spaRoutingCode = `# Nginx config — React SPA with HTML5 history routing
 # Serves the static build and falls back to index.html for client-side routes
@@ -196,12 +195,7 @@ const Nginx = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>nginx.conf</div>
-          <SyntaxHighlighter language="nginx" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'spa' ? spaRoutingCode : activeTab === 'proxy' ? reverseProxyCode : securityCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename="nginx.conf" language="nginx" code={activeTab === 'spa' ? spaRoutingCode : activeTab === 'proxy' ? reverseProxyCode : securityCode} showLineNumbers />
       </div>
     </div>
   );

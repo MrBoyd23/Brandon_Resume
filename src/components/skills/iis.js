@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const appPoolCode = `# IIS Application Pool troubleshooting
 # Common diagnostic commands used during incident response
@@ -182,14 +181,7 @@ const IIS = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>
-            {activeTab === 'apppool' ? 'cmd — appcmd' : activeTab === 'bindings' ? 'cmd — bindings' : 'powershell — troubleshooting'}
-          </div>
-          <SyntaxHighlighter language="powershell" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'apppool' ? appPoolCode : activeTab === 'bindings' ? bindingsCode : troubleshootCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'apppool' ? 'appcmd' : activeTab === 'bindings' ? 'bindings' : 'troubleshooting'} language="powershell" code={activeTab === 'apppool' ? appPoolCode : activeTab === 'bindings' ? bindingsCode : troubleshootCode} showLineNumbers />
       </div>
     </div>
   );

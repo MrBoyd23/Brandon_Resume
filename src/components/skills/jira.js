@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const jqlQueriesCode = `-- JQL Queries I use daily for incident management and reporting
 
@@ -146,12 +145,7 @@ const Jira = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>{activeTab === 'jql' ? 'JQL — Jira Query Language' : 'json — incident ticket structure'}</div>
-          <SyntaxHighlighter language={activeTab === 'jql' ? 'sql' : 'json'} style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'jql' ? jqlQueriesCode : jiraWorkflowCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'jql' ? 'Jira Query Language' : 'incident ticket structure'} language={activeTab === 'jql' ? 'sql' : 'json'} code={activeTab === 'jql' ? jqlQueriesCode : jiraWorkflowCode} showLineNumbers />
       </div>
     </div>
   );

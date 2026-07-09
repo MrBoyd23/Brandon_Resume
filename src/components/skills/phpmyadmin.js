@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const auditQueriesCode = `-- Emergency DB audit queries run via phpMyAdmin SQL editor
 -- Used during customer migration to identify issues before transfer
@@ -137,12 +136,7 @@ const PhpMyAdmin = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>{activeTab === 'audit' ? 'sql — audit queries' : 'bash / sql — export workflow'}</div>
-          <SyntaxHighlighter language={activeTab === 'audit' ? 'sql' : 'bash'} style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'audit' ? auditQueriesCode : exportCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'audit' ? 'audit queries' : 'export workflow'} language={activeTab === 'audit' ? 'sql' : 'bash'} code={activeTab === 'audit' ? auditQueriesCode : exportCode} showLineNumbers />
       </div>
     </div>
   );

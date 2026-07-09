@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const whmApiCode = `#!/bin/bash
 # WHM API calls for scripted bulk account operations
@@ -146,12 +145,7 @@ const CPanel = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>bash — WHM CLI / API</div>
-          <SyntaxHighlighter language="bash" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'api' ? whmApiCode : pkgacctCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename="WHM CLI / API" language="bash" code={activeTab === 'api' ? whmApiCode : pkgacctCode} showLineNumbers />
       </div>
     </div>
   );

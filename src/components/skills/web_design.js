@@ -1,8 +1,7 @@
 import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const gridLayoutCode = `/* monitoring-dashboard.css — Responsive grid layout */
 
@@ -181,12 +180,7 @@ const WebDesign = () => {
           that reorganizes itself cleanly across mobile, tablet, and desktop breakpoints without JavaScript.
         </p>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>css — responsive grid layout</div>
-          <SyntaxHighlighter language="css" style={vscDarkPlus} showLineNumbers>
-            {gridLayoutCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename="responsive grid layout" language="css" code={gridLayoutCode} showLineNumbers />
       </div>
     </div>
   );
