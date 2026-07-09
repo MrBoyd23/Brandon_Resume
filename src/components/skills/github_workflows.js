@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const buildDeployCode = `# GitHub Actions — Build and deploy React app
 # Triggered on push to main, builds and syncs to production
@@ -202,12 +201,7 @@ const GitHubWorkflows = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>yaml — .github/workflows/</div>
-          <SyntaxHighlighter language="yaml" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'build' ? buildDeployCode : activeTab === 'ci' ? ciTestingCode : scheduledCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename=".github/workflows/" language="yaml" code={activeTab === 'build' ? buildDeployCode : activeTab === 'ci' ? ciTestingCode : scheduledCode} showLineNumbers />
       </div>
     </div>
   );

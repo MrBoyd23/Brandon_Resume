@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const pleskCliCode = `#!/bin/bash
 # Plesk CLI commands for subscription setup, SSL, and hardening
@@ -147,12 +146,7 @@ const Plesk = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>bash — plesk bin CLI</div>
-          <SyntaxHighlighter language="bash" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'cli' ? pleskCliCode : wpToolkitCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename="plesk bin CLI" language="bash" code={activeTab === 'cli' ? pleskCliCode : wpToolkitCode} showLineNumbers />
       </div>
     </div>
   );

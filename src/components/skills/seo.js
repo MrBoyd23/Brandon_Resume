@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const robotsTxtCode = `# robots.txt — resume.brandonaboyd.com
 # Instructs crawlers on what to index and what to skip
@@ -171,16 +170,7 @@ const SEO = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>{activeTab === 'robots' ? 'robots.txt' : activeTab === 'sitemap' ? 'sitemap.xml' : 'apache .htaccess'}</div>
-          <SyntaxHighlighter
-            language={activeTab === 'robots' ? 'nginx' : activeTab === 'sitemap' ? 'xml' : 'apacheconf'}
-            style={vscDarkPlus}
-            showLineNumbers
-          >
-            {activeTab === 'robots' ? robotsTxtCode : activeTab === 'sitemap' ? sitemapCode : htaccessCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'robots' ? 'robots.txt' : activeTab === 'sitemap' ? 'sitemap.xml' : 'apache .htaccess'} language={activeTab === 'robots' ? 'nginx' : activeTab === 'sitemap' ? 'xml' : 'apacheconf'} code={activeTab === 'robots' ? robotsTxtCode : activeTab === 'sitemap' ? sitemapCode : htaccessCode} showLineNumbers />
       </div>
     </div>
   );

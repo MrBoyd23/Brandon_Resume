@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const s3HostingCode = `#!/bin/bash
 # Deploy static site to S3 + CloudFront + Route 53
@@ -183,12 +182,7 @@ const AWS = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>bash — AWS CLI</div>
-          <SyntaxHighlighter language="bash" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 's3' ? s3HostingCode : activeTab === 'cf' ? cloudfrontCode : route53Code}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename="AWS CLI" language="bash" code={activeTab === 's3' ? s3HostingCode : activeTab === 'cf' ? cloudfrontCode : route53Code} showLineNumbers />
       </div>
     </div>
   );

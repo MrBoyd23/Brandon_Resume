@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const gtmTagCode = `// GTM Tag Configuration — WooCommerce Purchase Conversion Tracking
 // Fires on: WooCommerce thank-you page (URL contains /order-received/)
@@ -201,12 +200,7 @@ const Online_Marketing = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>{activeTab === 'datalayer' ? 'php — functions.php (WooCommerce hook)' : 'json — GTM container export'}</div>
-          <SyntaxHighlighter language={activeTab === 'datalayer' ? 'php' : 'json'} style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'datalayer' ? gtmTagCode : gtmConfigCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'datalayer' ? 'functions.php (WooCommerce hook)' : 'GTM container export'} language={activeTab === 'datalayer' ? 'php' : 'json'} code={activeTab === 'datalayer' ? gtmTagCode : gtmConfigCode} showLineNumbers />
       </div>
     </div>
   );

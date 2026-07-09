@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const vhostConfig = `# /etc/apache2/sites-available/example.com.conf
 <VirtualHost *:80>
@@ -120,12 +119,7 @@ const Apache = () => {
 
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Key Commands</h2>
-          <div className={styles.codeWrapper}>
-            <div className={styles.codeLabel}>bash — daily commands</div>
-            <SyntaxHighlighter language="bash" style={vscDarkPlus} customStyle={{margin:0,borderRadius:0}}>
-              {dailyCmds}
-            </SyntaxHighlighter>
-          </div>
+          <CodeBlock filename="daily commands" language="bash" code={dailyCmds} />
         </div>
       </div>
 
@@ -143,12 +137,7 @@ const Apache = () => {
               {active === i ? '▼ Hide' : '▶ Show'} {label}
             </button>
             {active === i && (
-              <div className={styles.codeWrapper}>
-                <div className={styles.codeLabel}>{label}</div>
-                <SyntaxHighlighter language={lang} style={vscDarkPlus} customStyle={{margin:0,borderRadius:0}}>
-                  {code}
-                </SyntaxHighlighter>
-              </div>
+              <CodeBlock filename={label} language={lang} code={code} />
             )}
           </div>
         ))}

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const phpIniCode = `; /etc/php/8.2/fpm/php.ini — Production tuning
 memory_limit = 256M
@@ -152,14 +151,7 @@ const PHP = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>
-            {activeTab === 'ini' ? 'php.ini' : activeTab === 'diag' ? 'bash' : 'php-fpm pool config'}
-          </div>
-          <SyntaxHighlighter language={activeTab === 'ini' || activeTab === 'fpm' ? 'ini' : 'bash'} style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'ini' ? phpIniCode : activeTab === 'diag' ? phpDiagCode : fpmPoolCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'ini' ? 'php.ini' : activeTab === 'diag' ? 'bash' : 'php-fpm pool config'} language={activeTab === 'ini' || activeTab === 'fpm' ? 'ini' : 'bash'} code={activeTab === 'ini' ? phpIniCode : activeTab === 'diag' ? phpDiagCode : fpmPoolCode} showLineNumbers />
       </div>
     </div>
   );

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const botIntentCode = `// HelpBot intent configuration — LivePerson Bot Studio
 // Handles Tier-1 agent questions about common hosting issues
@@ -216,12 +215,7 @@ const LivePerson = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>json — LivePerson Bot Studio config</div>
-          <SyntaxHighlighter language="json" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'bot' ? botIntentCode : routingRulesCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename="LivePerson Bot Studio config" language="json" code={activeTab === 'bot' ? botIntentCode : routingRulesCode} showLineNumbers />
       </div>
     </div>
   );

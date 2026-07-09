@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const contactFormCode = `// Express — Contact form endpoint with Nodemailer
 // Validates input, sends email, and reports errors to DataTracker
@@ -197,12 +196,7 @@ const Express = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>javascript — server.js</div>
-          <SyntaxHighlighter language="javascript" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'contact' ? contactFormCode : activeTab === 'pdf' ? pdfGenerationCode : errorHandlingCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename="server.js" language="javascript" code={activeTab === 'contact' ? contactFormCode : activeTab === 'pdf' ? pdfGenerationCode : errorHandlingCode} showLineNumbers />
       </div>
     </div>
   );

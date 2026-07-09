@@ -7,7 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 
-const CodeBlock = ({ filename, language, code }) => {
+const CodeBlock = ({ filename, language, code, showLineNumbers = false }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -38,6 +38,7 @@ const CodeBlock = ({ filename, language, code }) => {
       <SyntaxHighlighter
         language={language}
         style={vscDarkPlus}
+        showLineNumbers={showLineNumbers}
         customStyle={{ margin: 0, fontSize: '0.82rem' }}
       >
         {code}

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const processlistCode = `-- Find blocking queries and long-running connections
 SHOW FULL PROCESSLIST;
@@ -153,12 +152,7 @@ const MySQL = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>{activeTab === 'backup' ? 'bash / sql' : 'sql'}</div>
-          <SyntaxHighlighter language={activeTab === 'backup' ? 'bash' : 'sql'} style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'process' ? processlistCode : activeTab === 'slow' ? slowQueryCode : backupGrantCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'backup' ? 'bash / sql' : 'sql'} language={activeTab === 'backup' ? 'bash' : 'sql'} code={activeTab === 'process' ? processlistCode : activeTab === 'slow' ? slowQueryCode : backupGrantCode} showLineNumbers />
       </div>
     </div>
   );

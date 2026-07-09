@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const cpuDiagCode = `#!/bin/bash
 # Production server at 100% CPU — full diagnostic sequence
@@ -201,12 +200,7 @@ const Linux_Admin = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>bash — {activeTab === 'cpu' ? 'CPU incident diagnosis' : activeTab === 'services' ? 'systemd / journalctl' : 'iptables / nftables'}</div>
-          <SyntaxHighlighter language="bash" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'cpu' ? cpuDiagCode : activeTab === 'services' ? serviceManagementCode : firewallCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename={activeTab === 'cpu' ? 'CPU incident diagnosis' : activeTab === 'services' ? 'systemd / journalctl' : 'iptables / nftables'} language="bash" code={activeTab === 'cpu' ? cpuDiagCode : activeTab === 'services' ? serviceManagementCode : firewallCode} showLineNumbers />
       </div>
     </div>
   );

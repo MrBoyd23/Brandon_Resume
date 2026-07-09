@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
 import useDocTitle from '../../hooks/useDocTitle';
+import CodeBlock from './CodeBlock';
 
 const malwareRemediationCode = `#!/bin/bash
 # WordPress malware remediation workflow using WP-CLI
@@ -232,12 +231,7 @@ const WordPress = () => {
           ))}
         </div>
 
-        <div className={styles.codeWrapper}>
-          <div className={styles.codeLabel}>bash — WP-CLI</div>
-          <SyntaxHighlighter language="bash" style={vscDarkPlus} showLineNumbers>
-            {activeTab === 'remediation' ? malwareRemediationCode : wpcliDailyCode}
-          </SyntaxHighlighter>
-        </div>
+        <CodeBlock filename="WP-CLI" language="bash" code={activeTab === 'remediation' ? malwareRemediationCode : wpcliDailyCode} showLineNumbers />
       </div>
 
       <div className={styles.liveSection}>
