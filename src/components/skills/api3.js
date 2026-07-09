@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 // API credentials loaded from environment variables (never hardcode secrets)
-const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-const ACCESS_TOKEN = process.env.REACT_APP_TMDB_ACCESS_TOKEN;
+const API_KEY = import.meta.env.REACT_APP_TMDB_API_KEY;
+const ACCESS_TOKEN = import.meta.env.REACT_APP_TMDB_ACCESS_TOKEN;
 
 // ── Shared style helpers ──────────────────────────────────────────────
 

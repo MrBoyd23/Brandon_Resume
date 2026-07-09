@@ -13,7 +13,7 @@ function useGtagPageView() {
   const location = useLocation();
   useEffect(() => {
     if (typeof window.gtag === 'function') {
-      window.gtag('config', process.env.REACT_APP_GA_MEASUREMENT_ID, {
+      window.gtag('config', import.meta.env.REACT_APP_GA_MEASUREMENT_ID, {
         page_path: location.pathname + location.search,
         page_title: document.title,
       });

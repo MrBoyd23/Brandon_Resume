@@ -55,12 +55,12 @@ function useGtagPageView() {
     // Guard: don't fire if gtag isn't loaded or measurement ID is missing
     if (
       typeof window.gtag !== 'function' ||
-      !process.env.REACT_APP_GA_MEASUREMENT_ID
+      !import.meta.env.REACT_APP_GA_MEASUREMENT_ID
     ) {
       return;
     }
 
-    window.gtag('config', process.env.REACT_APP_GA_MEASUREMENT_ID, {
+    window.gtag('config', import.meta.env.REACT_APP_GA_MEASUREMENT_ID, {
       // Full path including query string — important for tracking search params
       page_path: location.pathname + location.search,
       // Document title at time of navigation

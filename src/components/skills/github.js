@@ -95,7 +95,7 @@ const GitHub = () => {
   const [repoLoading, setRepoLoading] = useState(true);
   const [repoError, setRepoError] = useState(null);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_GITHUB_API_BASE}/users/${process.env.REACT_APP_GITHUB_USERNAME}/repos?sort=updated&per_page=6`)
+    fetch(`${import.meta.env.REACT_APP_GITHUB_API_BASE}/users/${import.meta.env.REACT_APP_GITHUB_USERNAME}/repos?sort=updated&per_page=6`)
       .then(res => {
         if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
         return res.json();
