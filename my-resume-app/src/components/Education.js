@@ -1,7 +1,10 @@
 import React from 'react';
 import styles from '../css/Education.module.css';
+import useDocTitle from '../hooks/useDocTitle';
 
-const Education = () => (
+const Education = () => {
+  useDocTitle('Education');
+  return (
     <div className={styles.education}>
         <h2 className={styles.heading}>Education</h2>
 
@@ -14,10 +17,12 @@ const Education = () => (
             <span className={styles.year}>2006</span>
 
             <hr className={styles.sectionDivider} />
-            <p className={styles.detailLabel}>Relevant Coursework</p>
-            <ul className={styles.tagsList}>
-                <li><span className={styles.tag}>CIS 126DL — Linux Operating System</span></li>
-            </ul>
+            <div className={styles.detailRow}>
+                <p className={styles.detailLabel}>Relevant Coursework</p>
+                <ul className={styles.tagsList}>
+                    <li><span className={styles.tag}>CIS 126DL — Linux Operating System</span></li>
+                </ul>
+            </div>
         </div>
 
         {/* ── Mesa High School ── */}
@@ -29,12 +34,15 @@ const Education = () => (
             <span className={styles.year}>2000 – 2003</span>
 
             <hr className={styles.sectionDivider} />
-            <p className={styles.detailLabel}>Activities &amp; Societies</p>
-            <ul className={styles.tagsList}>
-                <li><span className={styles.tag}>Computer Technology</span></li>
-            </ul>
+            <div className={styles.detailRow}>
+                <p className={styles.detailLabel}>Activities &amp; Societies</p>
+                <ul className={styles.tagsList}>
+                    <li><span className={styles.tag}>Computer Technology</span></li>
+                </ul>
+            </div>
         </div>
     </div>
-);
+  );
+};
 
 export default Education;

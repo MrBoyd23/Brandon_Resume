@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const vhostConfig = `# /etc/apache2/sites-available/example.com.conf
 <VirtualHost *:80>
@@ -84,6 +85,7 @@ const sections = [
 ];
 
 const Apache = () => {
+  useDocTitle('Apache');
   const [active, setActive] = useState(null);
 
   return (

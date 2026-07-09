@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const gtmTagCode = `// GTM Tag Configuration — WooCommerce Purchase Conversion Tracking
 // Fires on: WooCommerce thank-you page (URL contains /order-received/)
@@ -127,6 +128,7 @@ const gtmConfigCode = `// GTM Container — Tag, Trigger, and Variable configura
 }`;
 
 const Online_Marketing = () => {
+  useDocTitle('Online Marketing');
   const [activeTab, setActiveTab] = useState('datalayer');
 
   return (
@@ -160,17 +162,17 @@ const Online_Marketing = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>GTM Architecture Principles</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Single container for all pixels</strong> — One GTM container replaces
+            <strong style={{ color: 'var(--accent-soft)' }}>Single container for all pixels</strong> — One GTM container replaces
             all hardcoded tracking scripts. Marketing can add/modify tags without developer involvement, and you get
             a centralized audit trail of what's firing and when.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>dataLayer-driven events</strong> — E-commerce events (add-to-cart,
+            <strong style={{ color: 'var(--accent-soft)' }}>dataLayer-driven events</strong> — E-commerce events (add-to-cart,
             purchase, checkout steps) push structured data to the <code>dataLayer</code> from the backend. GTM tags
             read these variables and forward to GA4, Meta Pixel, and Google Ads simultaneously.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Server-side GTM</strong> — For high-traffic and privacy-sensitive
+            <strong style={{ color: 'var(--accent-soft)' }}>Server-side GTM</strong> — For high-traffic and privacy-sensitive
             deployments, I've worked with server-side GTM configurations that process events on the server before
             forwarding to ad platforms, improving ad signal quality and bypassing client-side blocking.
           </p>

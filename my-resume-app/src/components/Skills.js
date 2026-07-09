@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../css/Skills.module.css';
 import { codingSkills, softwareSkills } from '../data/skillsConfig';
+import useDocTitle from '../hooks/useDocTitle';
 
 const projects = [
   {
@@ -47,6 +48,40 @@ const projects = [
   },
 ];
 
+const aiCompetencies = [
+  {
+    title: 'AI-Assisted Development',
+    bullets: [
+      'Utilizing Claude Code for autonomous codebase work — multi-file refactoring, documentation generation, test creation, and architecture planning across full-stack projects.',
+      'Applying prompt engineering techniques — system prompts, few-shot examples, token budget management, and temperature tuning — to produce reliable, repeatable AI outputs.',
+      'Selecting models based on task complexity and cost profile, routing routine tasks to efficient models and complex reasoning to more capable ones.',
+    ],
+  },
+  {
+    title: 'AI API Integration',
+    bullets: [
+      'Integrating the Anthropic SDK (Claude) and OpenAI API into Python and Node.js applications — streaming responses, tool use / function calling, and multi-turn conversation management.',
+      'Building middleware that routes requests to different AI models based on task type and complexity, balancing quality against token cost at scale.',
+      'Handling real-time streaming in chat interfaces and CLI tools, including partial response processing and graceful error recovery.',
+    ],
+  },
+  {
+    title: 'MCP Tool Development',
+    bullets: [
+      'Building custom MCP (Model Context Protocol) tool servers that expose real-time system data, APIs, and operational actions to AI agents — extending LLMs from text generation into infrastructure-aware automation.',
+      'Defining tool schemas with structured input validation that allow AI agents to query live system state, execute operations, and return structured results.',
+    ],
+  },
+  {
+    title: 'Self-Hosted AI Models',
+    bullets: [
+      'Running open-source LLMs (Llama 3, Mistral, CodeLlama) locally using Ollama — full control of the model stack, no external data exposure, no per-token usage fees.',
+      'Managing quantization trade-offs (Q4 vs Q8) and hardware resource allocation to run capable models on consumer-grade infrastructure.',
+      'Deploying local AI endpoints for automated log summarization, internal documentation chatbots, and private code completion.',
+    ],
+  },
+];
+
 const sites = [
   { name: 'Dev.BrandonABoyd.com', url: 'http://dev.brandonaboyd.com/', desc: 'Development and staging environment for testing new features before production.' },
   { name: 'PhoenixAZEvents.com', url: 'http://phoenixazevents.com/', desc: 'Local event discovery site for the Phoenix, AZ area — WordPress with custom event listings.' },
@@ -54,6 +89,15 @@ const sites = [
   { name: 'BrandonABoyd.com', url: 'http://brandonaboyd.com/', desc: 'A family website bringing together moments, memories, and milestones shared with my kids.' },
   { name: 'RachelIGarcia.com', url: 'http://racheligarcia.com/', desc: 'A heartfelt tribute dedicated to the life and legacy of Rachel Irene Garcia.' },
 ];
+
+/** Favicon URL for a site, derived from its hostname. */
+const faviconFor = (url) => {
+  try {
+    return `https://icons.duckduckgo.com/ip3/${new URL(url).hostname}.ico`;
+  } catch {
+    return null;
+  }
+};
 
 /**
  * Skills — shows Coding and Software categories inline with expandable
@@ -89,6 +133,7 @@ const CategoryAccordion = ({ title, skills, defaultOpen = true }) => {
 };
 
 const Skills = () => {
+  useDocTitle('Skills');
   return (
     <div className={styles.skillsPage}>
       <p className={styles.intro}>
@@ -101,15 +146,42 @@ const Skills = () => {
         <CategoryAccordion title="🛠 Software &amp; Tools" skills={softwareSkills} defaultOpen={true} />
       </div>
 
+      <div className={styles.projectsSection}>
+        <h2 className={styles.sitesHeading}>AI &amp; Automation</h2>
+        <div className={styles.projectsGrid}>
+          {aiCompetencies.map(item => (
+            <div key={item.title} className={`${styles.projectCard} ${styles.aiCard}`}>
+              <h3 className={styles.projectCardTitle}>{item.title}</h3>
+              <ul className={styles.projectCardList}>
+                {item.bullets.map((bullet, i) => (
+                  <li key={i}>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className={styles.sitesSection}>
         <h2 className={styles.sitesHeading}>Sites I've Built</h2>
         <div className={styles.sitesGrid}>
           {sites.map(site => (
             <div key={site.name} className={styles.siteCard}>
-              <h3 className={styles.siteCardName}>{site.name}</h3>
+              <div className={styles.siteCardHead}>
+                <img
+                  className={styles.siteFavicon}
+                  src={faviconFor(site.url)}
+                  alt=""
+                  width="22"
+                  height="22"
+                  loading="lazy"
+                  onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }}
+                />
+                <h3 className={styles.siteCardName}>{site.name}</h3>
+              </div>
               <p className={styles.siteCardDesc}>{site.desc}</p>
               <a href={site.url} target="_blank" rel="noopener noreferrer" className={styles.siteCardLink}>
-                Visit site →
+                Visit site <span aria-hidden="true">→</span>
               </a>
             </div>
           ))}

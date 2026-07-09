@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const createIncidentCode = `#!/usr/bin/env python3
 """
@@ -140,6 +141,7 @@ PATCH https://company.service-now.com/api/now/table/incident/{sys_id}
 }`;
 
 const ServiceNow = () => {
+  useDocTitle('ServiceNow');
   const [activeTab, setActiveTab] = useState('create');
 
   return (
@@ -172,17 +174,17 @@ const ServiceNow = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Key Capabilities</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>CMDB queries</strong> — Identifying server ownership, environment,
+            <strong style={{ color: 'var(--accent-soft)' }}>CMDB queries</strong> — Identifying server ownership, environment,
             and related CIs during incidents. A well-maintained CMDB tells me which team owns a server, what services
             run on it, and what the change history looks like — in seconds.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Change management</strong> — Creating and tracking change requests
+            <strong style={{ color: 'var(--accent-soft)' }}>Change management</strong> — Creating and tracking change requests
             through the approval workflow. Every infrastructure change that touches production goes through a ServiceNow
             change request with risk assessment, implementation plan, and rollback steps.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Automation via REST API</strong> — Python scripts that create incidents,
+            <strong style={{ color: 'var(--accent-soft)' }}>Automation via REST API</strong> — Python scripts that create incidents,
             update CI records, and close tickets automatically as part of provisioning and decommission workflows.
           </p>
           <div className={styles.tipBox}>

@@ -9,15 +9,15 @@
 
 /* ── Page heading ─────────────────────────────────────────── */
 .heading {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--text);
   letter-spacing: 0.5px;
   margin-bottom: 28px;
   display: inline-block;
   padding-bottom: 8px;
-  border-bottom: 2px solid #3b82f6;
+  border-bottom: 2px solid var(--accent);
 }
 
 /* ── Vertical timeline line ───────────────────────────────── */
@@ -28,16 +28,16 @@
   top: 60px;
   bottom: 10px;
   width: 2px;
-  background: linear-gradient(to bottom, #3b82f6, #1e3a5f, transparent);
-  border-radius: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--surface-accent), transparent);
+  border-radius: var(--radius-2);
 }
 
 /* ── Education card ───────────────────────────────────────── */
 .educationItem {
   position: relative;
-  background: #111827;
-  border: 1px solid #1e293b;
-  border-left: 3px solid #3b82f6;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
   border-radius: 0 12px 12px 0;
   padding: 28px 32px;
   margin-bottom: 24px;
@@ -45,8 +45,8 @@
 }
 
 .educationItem:hover {
-  border-left-color: #60a5fa;
-  box-shadow: 0 6px 28px rgba(59, 130, 246, 0.12);
+  border-left-color: var(--accent-hover);
+  box-shadow: 0 6px 28px rgba(var(--accent-rgb), 0.12);
 }
 
 /* Timeline dot */
@@ -57,47 +57,47 @@
   top: 32px;
   width: 10px;
   height: 10px;
-  border-radius: 50%;
-  background: #3b82f6;
-  border: 2px solid #0a0f1a;
-  box-shadow: 0 0 0 2px #3b82f6;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
 /* ── School name ──────────────────────────────────────────── */
 .schoolName {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--text);
   margin: 0 0 6px;
   letter-spacing: 0.3px;
 }
 
 /* ── Degree / date line ───────────────────────────────────── */
 .degree {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.88rem;
-  color: #cbd5e1;
+  color: var(--text-secondary);
   margin: 0 0 2px;
   line-height: 1.6;
 }
 
 .degreeLabel {
-  color: #60a5fa;
+  color: var(--accent-hover);
   font-weight: 500;
 }
 
 /* ── Year badge ───────────────────────────────────────────── */
 .year {
   display: inline-block;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 600;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: var(--link);
+  background: rgba(var(--link-rgb), 0.08);
+  border: 1px solid rgba(var(--link-rgb), 0.2);
   padding: 2px 10px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   letter-spacing: 0.5px;
   margin-top: 6px;
   margin-bottom: 10px;
@@ -106,27 +106,27 @@
 /* ── Section divider inside card ──────────────────────────── */
 .sectionDivider {
   height: 1px;
-  background: linear-gradient(90deg, #1e293b, transparent);
+  background: linear-gradient(90deg, var(--border), transparent);
   margin: 14px 0;
   border: none;
 }
 
 /* ── Coursework / activities label ────────────────────────── */
 .detailLabel {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #3b82f6;
+  color: var(--accent);
   margin: 0 0 8px;
 }
 
 /* ── Detail text ──────────────────────────────────────────── */
 .detailText {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   margin: 0;
   line-height: 1.65;
 }
@@ -153,14 +153,14 @@
 
 .tag {
   display: inline-block;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 500;
-  color: #cbd5e1;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  border: 1px solid #1e3a5f;
+  color: var(--text-secondary);
+  background: linear-gradient(135deg, var(--surface-2), var(--border));
+  border: 1px solid var(--surface-accent);
   padding: 5px 14px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   letter-spacing: 0.3px;
 }
 
@@ -170,4 +170,22 @@
   .schoolName { font-size: 1.15rem; }
   .education { padding-left: 18px; }
   .educationItem::before { left: -27px; }
+}
+
+/* ── Inline label + pill row (THALAB-717) — no orphaned pills ── */
+.detailRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.detailRow .detailLabel {
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Compact cards to remove dead space in the two-column layout */
+.educationItem {
+  padding: 22px 26px;
+  margin-bottom: 20px;
 }

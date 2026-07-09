@@ -2,6 +2,7 @@ import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const gridLayoutCode = `/* monitoring-dashboard.css — Responsive grid layout */
 
@@ -71,7 +72,7 @@ const gridLayoutCode = `/* monitoring-dashboard.css — Responsive grid layout *
   transition: border-color 0.2s;
 }
 
-.panel:hover { border-color: #3b82f6; }
+.panel:hover { border-color: var(--accent); }
 
 /* Flexbox for panel internals */
 .panel-header {
@@ -92,7 +93,7 @@ const gridLayoutCode = `/* monitoring-dashboard.css — Responsive grid layout *
   min-width: 80px;
   text-align: center;
   padding: 10px;
-  background: rgba(139,0,0,0.1);
+  background: rgba(var(--accent-rgb),0.1);
   border-radius: 6px;
 }`;
 
@@ -104,6 +105,7 @@ const sites = [
 ];
 
 const WebDesign = () => {
+  useDocTitle('Web Design');
   return (
     <div className={styles.skillPage}>
       <div className={styles.hero}>
@@ -134,16 +136,16 @@ const WebDesign = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Design Principles I Follow</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Mobile-first</strong> — Base styles target small screens, complexity added
+            <strong style={{ color: 'var(--accent-soft)' }}>Mobile-first</strong> — Base styles target small screens, complexity added
             with <code>min-width</code> breakpoints. Results in leaner, more maintainable CSS than desktop-down rewrites.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Performance as design</strong> — A beautifully designed page that loads
+            <strong style={{ color: 'var(--accent-soft)' }}>Performance as design</strong> — A beautifully designed page that loads
             in 4 seconds is a bad design. I optimize Core Web Vitals (LCP, CLS, FID) as part of the design process,
             not as an afterthought.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Semantic HTML</strong> — Using correct elements (<code>nav</code>, <code>main</code>,
+            <strong style={{ color: 'var(--accent-soft)' }}>Semantic HTML</strong> — Using correct elements (<code>nav</code>, <code>main</code>,
             <code>article</code>, <code>section</code>) improves accessibility, SEO crawlability, and screen reader compatibility.
           </p>
           <div className={styles.tipBox}>

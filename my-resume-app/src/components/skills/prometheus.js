@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const scrapeConfigCode = `# prometheus.yml — scrape configuration for adding new servers
 
@@ -224,6 +225,7 @@ groups:
           * 8 / 1000000`;
 
 const Prometheus = () => {
+  useDocTitle('Prometheus');
   const [activeTab, setActiveTab] = useState('scrape');
 
   return (
@@ -256,16 +258,16 @@ const Prometheus = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Architecture Overview</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Scrape model</strong> — Prometheus polls targets (node_exporter,
+            <strong style={{ color: 'var(--accent-soft)' }}>Scrape model</strong> — Prometheus polls targets (node_exporter,
             mysql_exporter, custom exporters) at configurable intervals. File-based service discovery means new servers
             auto-appear in monitoring without restarting Prometheus.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Alert pipeline</strong> — Prometheus evaluates alert rules every 60s,
+            <strong style={{ color: 'var(--accent-soft)' }}>Alert pipeline</strong> — Prometheus evaluates alert rules every 60s,
             fires to Alertmanager, which deduplicates and routes to PagerDuty/Slack based on severity and team labels.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Recording rules</strong> — Pre-computed expressions stored as new metrics.
+            <strong style={{ color: 'var(--accent-soft)' }}>Recording rules</strong> — Pre-computed expressions stored as new metrics.
             Critical for dashboards that query 100K+ time series — a recording rule reduces query time from seconds to milliseconds.
           </p>
           <div className={styles.tipBox}>

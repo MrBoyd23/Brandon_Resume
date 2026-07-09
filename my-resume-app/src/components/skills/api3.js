@@ -14,8 +14,8 @@ const ratingBadgeColor = (score) => {
 
 const cardStyle = {
   backgroundColor: '#0d0d0d',
-  border: '1px solid #1e1e1e',
-  borderTop: '3px solid #3b82f6',
+  border: '1px solid var(--border)',
+  borderTop: '3px solid var(--accent)',
   borderRadius: '10px',
   overflow: 'hidden',
   display: 'flex',
@@ -30,38 +30,38 @@ const gridStyle = {
 };
 
 const sectionHeadingStyle = {
-  fontFamily: "'Playfair Display', serif",
+  fontFamily: "var(--font-display)",
   fontSize: '1.6rem',
   color: '#fff',
-  borderBottom: '2px solid #3b82f6',
+  borderBottom: '2px solid var(--accent)',
   paddingBottom: '8px',
   marginBottom: '20px',
 };
 
 const errorBoxStyle = {
-  backgroundColor: 'rgba(139,0,0,0.15)',
-  border: '1px solid #3b82f6',
+  backgroundColor: 'rgba(var(--accent-rgb),0.15)',
+  border: '1px solid var(--accent)',
   borderRadius: '8px',
   padding: '16px 20px',
   color: '#ff6b6b',
-  fontFamily: "'Poppins', sans-serif",
+  fontFamily: "var(--font-body)",
   fontSize: '0.95rem',
 };
 
 const paginationBtnBase = {
   padding: '6px 14px',
   margin: '0 3px',
-  border: '1px solid #1e1e1e',
+  border: '1px solid var(--border)',
   borderRadius: '6px',
   cursor: 'pointer',
-  fontFamily: "'Poppins', sans-serif",
+  fontFamily: "var(--font-body)",
   fontSize: '0.85rem',
   transition: 'background-color 0.2s ease, color 0.2s ease',
 };
 
 const paginationBtn = (isActive) => ({
   ...paginationBtnBase,
-  backgroundColor: isActive ? '#3b82f6' : '#0d0d0d',
+  backgroundColor: isActive ? 'var(--accent)' : '#0d0d0d',
   color: isActive ? '#fff' : '#aaa',
 });
 
@@ -80,10 +80,10 @@ const SearchBar = ({ onSearch, onClear, onCategoryChange, selectedCategory }) =>
     border: 'none',
     borderRadius: '999px',
     cursor: 'pointer',
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "var(--font-body)",
     fontSize: '0.85rem',
     fontWeight: active ? 600 : 400,
-    backgroundColor: active ? '#3b82f6' : '#1a1a1a',
+    backgroundColor: active ? 'var(--accent)' : '#1a1a1a',
     color: active ? '#fff' : '#aaa',
     transition: 'background-color 0.2s ease, color 0.2s ease',
     outline: 'none',
@@ -95,10 +95,10 @@ const SearchBar = ({ onSearch, onClear, onCategoryChange, selectedCategory }) =>
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "var(--font-body)",
     fontSize: '0.95rem',
     fontWeight: 600,
-    backgroundColor: variant === 'primary' ? '#3b82f6' : '#1a1a1a',
+    backgroundColor: variant === 'primary' ? 'var(--accent)' : '#1a1a1a',
     color: '#fff',
     transition: 'background-color 0.2s ease',
   });
@@ -120,10 +120,10 @@ const SearchBar = ({ onSearch, onClear, onCategoryChange, selectedCategory }) =>
             maxWidth: '500px',
             backgroundColor: '#111',
             color: '#fff',
-            border: `2px solid ${inputFocused ? '#3b82f6' : '#1e1e1e'}`,
+            border: `2px solid ${inputFocused ? 'var(--accent)' : 'var(--border)'}`,
             borderRadius: '8px',
             outline: 'none',
-            fontFamily: "'Poppins', sans-serif",
+            fontFamily: "var(--font-body)",
             transition: 'border-color 0.2s ease',
           }}
         />
@@ -238,7 +238,7 @@ const TheMovieDBTopMovies = ({ searchQuery }) => {
   return (
     <div style={{ marginTop: '20px' }}>
       {searchQuery && <h2 style={sectionHeadingStyle}>Search Results for Movies</h2>}
-      {searchQuery && searchResults.length === 0 && <p style={{ fontFamily: "'Poppins', sans-serif", color: '#aaa' }}>No results found.</p>}
+      {searchQuery && searchResults.length === 0 && <p style={{ fontFamily: "var(--font-body)", color: '#aaa' }}>No results found.</p>}
       {!searchQuery && <h2 style={sectionHeadingStyle}>Top Rated Movies</h2>}
       {errorMessage ? (
         <div style={errorBoxStyle}>
@@ -250,7 +250,7 @@ const TheMovieDBTopMovies = ({ searchQuery }) => {
             <div
               key={movie.id}
               style={cardStyle}
-              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 6px 24px rgba(139,0,0,0.35)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 6px 24px rgba(var(--accent-rgb),0.35)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               <img
@@ -258,8 +258,8 @@ const TheMovieDBTopMovies = ({ searchQuery }) => {
                 alt={movie.title}
                 style={{ width: '100%', display: 'block', aspectRatio: '2/3', objectFit: 'cover' }}
               />
-              <div style={{ padding: '12px', fontFamily: "'Poppins', sans-serif" }}>
-                <h3 style={{ margin: '0 0 6px 0', fontSize: '0.95rem', fontFamily: "'Playfair Display', serif", color: '#fff', lineHeight: 1.3 }}>
+              <div style={{ padding: '12px', fontFamily: "var(--font-body)" }}>
+                <h3 style={{ margin: '0 0 6px 0', fontSize: '0.95rem', fontFamily: "var(--font-display)", color: '#fff', lineHeight: 1.3 }}>
                   {movie.title}
                 </h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
@@ -281,7 +281,7 @@ const TheMovieDBTopMovies = ({ searchQuery }) => {
                     href={`https://www.themoviedb.org/movie/${movie.id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: '#40e0d0', textDecoration: 'none', fontSize: '0.78rem', marginLeft: 'auto' }}
+                    style={{ color: 'var(--link)', textDecoration: 'none', fontSize: '0.78rem', marginLeft: 'auto' }}
                   >
                     TMDB
                   </a>
@@ -289,10 +289,10 @@ const TheMovieDBTopMovies = ({ searchQuery }) => {
                 <p style={{ fontSize: '0.78rem', color: '#999', margin: '0 0 8px 0', lineHeight: 1.45, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                   {movie.overview}
                 </p>
-                <div style={{ borderTop: '1px solid #1e1e1e', paddingTop: '8px', fontSize: '0.75rem', color: '#888' }}>
+                <div style={{ borderTop: '1px solid var(--border)', paddingTop: '8px', fontSize: '0.75rem', color: '#888' }}>
                   <span>Cert: {movie.certification}</span>
                 </div>
-                <div style={{ borderTop: '1px solid #1e1e1e', paddingTop: '8px', marginTop: '8px', fontSize: '0.72rem', color: '#777', lineHeight: 1.6 }}>
+                <div style={{ borderTop: '1px solid var(--border)', paddingTop: '8px', marginTop: '8px', fontSize: '0.72rem', color: '#777', lineHeight: 1.6 }}>
                   {movie.actors?.map(actor => (
                     <React.Fragment key={actor.name}>
                       <span style={{ color: '#ccc' }}>{actor.name}</span> <span style={{ color: '#555' }}>as</span> {actor.character}<br />
@@ -419,7 +419,7 @@ const TheMovieDBTopTVShows = ({ searchQuery }) => {
   return (
     <div style={{ marginTop: '20px' }}>
       {searchQuery && <h2 style={sectionHeadingStyle}>Search Results for TV Shows</h2>}
-      {searchQuery && searchResults.length === 0 && <p style={{ fontFamily: "'Poppins', sans-serif", color: '#aaa' }}>No results found.</p>}
+      {searchQuery && searchResults.length === 0 && <p style={{ fontFamily: "var(--font-body)", color: '#aaa' }}>No results found.</p>}
       {!searchQuery && <h2 style={sectionHeadingStyle}>Top Rated TV Shows</h2>}
       {errorMessage ? (
         <div style={errorBoxStyle}>
@@ -431,7 +431,7 @@ const TheMovieDBTopTVShows = ({ searchQuery }) => {
             <div
               key={show.id}
               style={cardStyle}
-              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 6px 24px rgba(139,0,0,0.35)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 6px 24px rgba(var(--accent-rgb),0.35)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               <img
@@ -439,8 +439,8 @@ const TheMovieDBTopTVShows = ({ searchQuery }) => {
                 alt={show.name}
                 style={{ width: '100%', display: 'block', aspectRatio: '2/3', objectFit: 'cover' }}
               />
-              <div style={{ padding: '12px', fontFamily: "'Poppins', sans-serif" }}>
-                <h3 style={{ margin: '0 0 6px 0', fontSize: '0.95rem', fontFamily: "'Playfair Display', serif", color: '#fff', lineHeight: 1.3 }}>
+              <div style={{ padding: '12px', fontFamily: "var(--font-body)" }}>
+                <h3 style={{ margin: '0 0 6px 0', fontSize: '0.95rem', fontFamily: "var(--font-display)", color: '#fff', lineHeight: 1.3 }}>
                   {show.name}
                 </h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
@@ -462,7 +462,7 @@ const TheMovieDBTopTVShows = ({ searchQuery }) => {
                     href={`https://www.themoviedb.org/tv/${show.id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: '#40e0d0', textDecoration: 'none', fontSize: '0.78rem', marginLeft: 'auto' }}
+                    style={{ color: 'var(--link)', textDecoration: 'none', fontSize: '0.78rem', marginLeft: 'auto' }}
                   >
                     TMDB
                   </a>
@@ -470,10 +470,10 @@ const TheMovieDBTopTVShows = ({ searchQuery }) => {
                 <p style={{ fontSize: '0.78rem', color: '#999', margin: '0 0 8px 0', lineHeight: 1.45, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                   {show.overview}
                 </p>
-                <div style={{ borderTop: '1px solid #1e1e1e', paddingTop: '8px', fontSize: '0.75rem', color: '#888' }}>
+                <div style={{ borderTop: '1px solid var(--border)', paddingTop: '8px', fontSize: '0.75rem', color: '#888' }}>
                   <span>Cert: {show.certification}</span>
                 </div>
-                <div style={{ borderTop: '1px solid #1e1e1e', paddingTop: '8px', marginTop: '8px', fontSize: '0.72rem', color: '#777', lineHeight: 1.6 }}>
+                <div style={{ borderTop: '1px solid var(--border)', paddingTop: '8px', marginTop: '8px', fontSize: '0.72rem', color: '#777', lineHeight: 1.6 }}>
                   {show.actors?.map(actor => (
                     <React.Fragment key={actor.name}>
                       <span style={{ color: '#ccc' }}>{actor.name}</span> <span style={{ color: '#555' }}>as</span> {actor.character}<br />
@@ -592,7 +592,7 @@ const TheMovieDBTopActors = ({ searchQuery, onActorClick }) => {
   return (
     <div style={{ marginTop: '20px' }}>
       {searchQuery && <h2 style={sectionHeadingStyle}>Search Results for Actors</h2>}
-      {searchQuery && searchResults.length === 0 && <p style={{ fontFamily: "'Poppins', sans-serif", color: '#aaa' }}>No results found.</p>}
+      {searchQuery && searchResults.length === 0 && <p style={{ fontFamily: "var(--font-body)", color: '#aaa' }}>No results found.</p>}
       {!searchQuery && <h2 style={sectionHeadingStyle}>Popular Actors</h2>}
       {errorMessage ? (
         <div style={errorBoxStyle}>
@@ -604,7 +604,7 @@ const TheMovieDBTopActors = ({ searchQuery, onActorClick }) => {
             <div
               key={actor.id}
               style={cardStyle}
-              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 6px 24px rgba(139,0,0,0.35)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 6px 24px rgba(var(--accent-rgb),0.35)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               <div style={{ display: 'flex', justifyContent: 'center', padding: '20px 0 10px 0' }}>
@@ -617,16 +617,16 @@ const TheMovieDBTopActors = ({ searchQuery, onActorClick }) => {
                     borderRadius: '50%',
                     objectFit: 'cover',
                     cursor: 'pointer',
-                    border: '3px solid #1e1e1e',
+                    border: '3px solid var(--border)',
                     transition: 'border-color 0.2s ease',
                   }}
                   onClick={() => handleActorClick(actor.id)}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#3b82f6'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#1e1e1e'; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; }}
                 />
               </div>
-              <div style={{ textAlign: 'center', padding: '8px 12px 16px 12px', fontFamily: "'Poppins', sans-serif" }}>
-                <h3 style={{ margin: '0', fontSize: '0.95rem', fontFamily: "'Playfair Display', serif", color: '#fff' }}>
+              <div style={{ textAlign: 'center', padding: '8px 12px 16px 12px', fontFamily: "var(--font-body)" }}>
+                <h3 style={{ margin: '0', fontSize: '0.95rem', fontFamily: "var(--font-display)", color: '#fff' }}>
                   {actor.name}
                 </h3>
               </div>
@@ -681,7 +681,7 @@ const App = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh', padding: '30px 20px', fontFamily: "'Poppins', sans-serif" }}>
+    <div style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh', padding: '30px 20px', fontFamily: "var(--font-body)" }}>
       <SearchBar onSearch={handleSearch} onClear={handleClear} onCategoryChange={handleCategoryChange} selectedCategory={selectedCategory} />
       {selectedCategory === 'movie' && <TheMovieDBTopMovies searchQuery={searchQuery} />}
       {selectedCategory === 'tv' && <TheMovieDBTopTVShows searchQuery={searchQuery} />}
@@ -694,12 +694,12 @@ const App = () => {
             style={{
               marginBottom: '16px',
               padding: '10px 24px',
-              backgroundColor: '#3b82f6',
+              backgroundColor: 'var(--accent)',
               color: '#fff',
               border: 'none',
               borderRadius: '8px',
               cursor: 'pointer',
-              fontFamily: "'Poppins', sans-serif",
+              fontFamily: "var(--font-body)",
               fontSize: '0.9rem',
               fontWeight: 600,
               transition: 'background-color 0.2s ease',
@@ -712,7 +712,7 @@ const App = () => {
               <div
                 key={item.id}
                 style={cardStyle}
-                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 6px 24px rgba(139,0,0,0.35)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 6px 24px rgba(var(--accent-rgb),0.35)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'translateY(0)'; }}
               >
                 <img
@@ -720,8 +720,8 @@ const App = () => {
                   alt={item.title || item.name}
                   style={{ width: '100%', display: 'block', aspectRatio: '2/3', objectFit: 'cover' }}
                 />
-                <div style={{ padding: '12px', fontFamily: "'Poppins', sans-serif" }}>
-                  <h3 style={{ margin: '0 0 6px 0', fontSize: '0.95rem', fontFamily: "'Playfair Display', serif", color: '#fff', lineHeight: 1.3 }}>
+                <div style={{ padding: '12px', fontFamily: "var(--font-body)" }}>
+                  <h3 style={{ margin: '0 0 6px 0', fontSize: '0.95rem', fontFamily: "var(--font-display)", color: '#fff', lineHeight: 1.3 }}>
                     {item.title || item.name}
                   </h3>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
@@ -743,7 +743,7 @@ const App = () => {
                       href={`https://www.themoviedb.org/${item.media_type}/${item.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: '#40e0d0', textDecoration: 'none', fontSize: '0.78rem', marginLeft: 'auto' }}
+                      style={{ color: 'var(--link)', textDecoration: 'none', fontSize: '0.78rem', marginLeft: 'auto' }}
                     >
                       TMDB
                     </a>

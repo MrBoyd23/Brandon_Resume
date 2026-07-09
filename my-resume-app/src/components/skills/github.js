@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const deployYmlCode = `# .github/workflows/deploy.yml
 # CI/CD pipeline: test + build + deploy on push to main
@@ -90,6 +91,7 @@ jobs:
         run: echo "Deployed commit \${{ github.sha }} to https://resume.brandonaboyd.com"`;
 
 const GitHub = () => {
+  useDocTitle('GitHub');
   const [repos, setRepos] = useState([]);
   const [repoLoading, setRepoLoading] = useState(true);
   const [repoError, setRepoError] = useState(null);
@@ -139,17 +141,17 @@ const GitHub = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Workflow Practices</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Branch protection</strong> — Main branch requires at least one
+            <strong style={{ color: 'var(--accent-soft)' }}>Branch protection</strong> — Main branch requires at least one
             PR review and passing CI checks before merging. Prevents direct pushes to production and maintains
             a clean, reviewable git history.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Conventional commits</strong> — Using prefixes like <code>feat:</code>,
+            <strong style={{ color: 'var(--accent-soft)' }}>Conventional commits</strong> — Using prefixes like <code>feat:</code>,
             <code> fix:</code>, <code>chore:</code>, <code>docs:</code> for machine-readable changelogs and
             automated semantic versioning.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Secrets management</strong> — All sensitive values (API keys, AWS
+            <strong style={{ color: 'var(--accent-soft)' }}>Secrets management</strong> — All sensitive values (API keys, AWS
             credentials) stored as GitHub Actions secrets or environment secrets — never in code or <code>.env</code> files
             committed to the repo.
           </p>

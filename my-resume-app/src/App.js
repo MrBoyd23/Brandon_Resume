@@ -1,9 +1,11 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import './css/styles.css';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Experience from './components/Experience';
 import NotFound from './components/NotFound';
+import PageLoader from './components/PageLoader';
+import ErrorBoundary from './components/ErrorBoundary';
 import { allSkills, CUSTOM_SKILL_IDS } from './data/skillsConfig';
 
 // Lazy-load non-homepage route components — only fetched when navigated to
@@ -46,6 +48,16 @@ const customComponents = {
   online_marketing:   lazy(() => import('./components/skills/online_marketing')),
   data_analytics:     lazy(() => import('./components/skills/data_analytics')),
   ai_development:     lazy(() => import('./components/skills/ai_development')),
+  splunk:             lazy(() => import('./components/skills/splunk')),
+  nginx:              lazy(() => import('./components/skills/nginx')),
+  cloudflare:         lazy(() => import('./components/skills/cloudflare')),
+  iis:                lazy(() => import('./components/skills/iis')),
+  confluence:         lazy(() => import('./components/skills/confluence')),
+  mssql:              lazy(() => import('./components/skills/mssql')),
+  kibana:             lazy(() => import('./components/skills/kibana')),
+  kentik:             lazy(() => import('./components/skills/kentik')),
+  github_workflows:   lazy(() => import('./components/skills/github_workflows')),
+  express:            lazy(() => import('./components/skills/express')),
 };
 
 // Generic placeholder for skills without custom content yet
@@ -73,45 +85,54 @@ const PageTracker = () => {
 function App() {
   return (
     <Router>
-      <div className="App">
-        <a href="#main-content" className="skip-link">Skip to content</a>
-        <Header />
-        <PageTracker />
-        <main id="main-content" className="container">
-          <Routes>
-            {/* Top-level section routes */}
-            <Route path="/"             element={<Experience />} />
-            <Route path="/Experience/*" element={<Suspense fallback={<div style={{color:'#666',fontStyle:'italic',padding:'40px 0',textAlign:'center'}}>Loading…</div>}><Skills /></Suspense>} />
-            <Route path="/Education/*"  element={<Suspense fallback={<div style={{color:'#666',fontStyle:'italic',padding:'40px 0',textAlign:'center'}}>Loading…</div>}><Education /><Certifications /></Suspense>} />
-            <Route path="/coding/*"     element={<Suspense fallback={<div style={{color:'#666',fontStyle:'italic',padding:'40px 0',textAlign:'center'}}>Loading…</div>}><Coding /></Suspense>} />
-            <Route path="/Software/*"   element={<Suspense fallback={<div style={{color:'#666',fontStyle:'italic',padding:'40px 0',textAlign:'center'}}>Loading…</div>}><Software /></Suspense>} />
+      <ErrorBoundary>
+        <div className="App">
+          <a href="#main-content" className="skip-link">Skip to content</a>
+          <Header />
+          <PageTracker />
+          <main id="main-content" className="container">
+            <Routes>
+              {/* Top-level section routes */}
+              <Route path="/"             element={<Experience />} />
+              <Route path="/experience/*" element={<ErrorBoundary><Suspense fallback={<PageLoader />}><Skills /></Suspense></ErrorBoundary>} />
+              <Route path="/education/*"  element={<ErrorBoundary><Suspense fallback={<PageLoader />}><div className="education-page"><Education /><Certifications /></div></Suspense></ErrorBoundary>} />
+              <Route path="/coding/*"     element={<ErrorBoundary><Suspense fallback={<PageLoader />}><Coding /></Suspense></ErrorBoundary>} />
+              <Route path="/software/*"   element={<ErrorBoundary><Suspense fallback={<PageLoader />}><Software /></Suspense></ErrorBoundary>} />
 
-            {/* Skill detail routes — generated from skillsConfig (no manual list needed) */}
-            {allSkills.map(({ id, label, category }) => {
-              const SkillComponent = CUSTOM_SKILL_IDS.has(id)
-                ? customComponents[id]
-                : SkillDetail;
-              const CategoryNav = category === 'coding' ? Coding : Software;
+              {/* Legacy URL redirects */}
+              <Route path="/Experience/*" element={<Navigate to="/experience" replace />} />
+              <Route path="/Education/*"  element={<Navigate to="/education" replace />} />
+              <Route path="/Software/*"   element={<Navigate to="/software" replace />} />
 
-              return (
-                <Route
-                  key={id}
-                  path={`/${id}/*`}
-                  element={
-                    <Suspense fallback={<div style={{color:'#666',fontStyle:'italic',padding:'40px 0',textAlign:'center'}}>Loading…</div>}>
-                      <CategoryNav />
-                      <SkillComponent name={label} />
-                    </Suspense>
-                  }
-                />
-              );
-            })}
+              {/* Skill detail routes — generated from skillsConfig (no manual list needed) */}
+              {allSkills.map(({ id, label, category }) => {
+                const SkillComponent = CUSTOM_SKILL_IDS.has(id)
+                  ? customComponents[id]
+                  : SkillDetail;
+                const CategoryNav = category === 'coding' ? Coding : Software;
 
-            {/* 404 catch-all — must be last */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-      </div>
+                return (
+                  <Route
+                    key={id}
+                    path={`/${id}/*`}
+                    element={
+                      <ErrorBoundary>
+                        <Suspense fallback={<PageLoader />}>
+                          <CategoryNav />
+                          <SkillComponent name={label} />
+                        </Suspense>
+                      </ErrorBoundary>
+                    }
+                  />
+                );
+              })}
+
+              {/* 404 catch-all — must be last */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+        </div>
+      </ErrorBoundary>
     </Router>
   );
 }

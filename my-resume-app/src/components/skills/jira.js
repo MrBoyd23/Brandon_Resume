@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const jqlQueriesCode = `-- JQL Queries I use daily for incident management and reporting
 
@@ -73,6 +74,7 @@ const jiraWorkflowCode = `# Incident lifecycle workflow — how I use Jira for p
 }`;
 
 const Jira = () => {
+  useDocTitle('Jira');
   const [activeTab, setActiveTab] = useState('jql');
 
   return (
@@ -111,12 +113,12 @@ const Jira = () => {
             SLA breach monitors, and sprint completion tracking.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Pattern identification</strong> — Querying by component and time window
+            <strong style={{ color: 'var(--accent-soft)' }}>Pattern identification</strong> — Querying by component and time window
             lets me spot when a particular service (MySQL, PHP-FPM, DNS) is generating a spike in incidents,
             triggering a proactive investigation before customers notice a trend.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>SLA management</strong> — Using the <code>breached()</code> function
+            <strong style={{ color: 'var(--accent-soft)' }}>SLA management</strong> — Using the <code>breached()</code> function
             to surface tickets that have missed SLA targets, enabling immediate escalation and RCA documentation.
           </p>
           <div className={styles.tipBox}>

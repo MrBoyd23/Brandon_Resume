@@ -2,13 +2,16 @@ import React from 'react';
 import WeatherComponent from './api2.js';
 import TMDbApp from './api3.js';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 /**
  * API — live demo hub showing real API integrations:
  *   1. Visual Crossing Weather API (api2.js)
  *   2. TMDb Movies/TV/Actors browser (api3.js)
  */
-const APIPage = () => (
+const APIPage = () => {
+  useDocTitle('API');
+  return (
   <div className={styles.skillPage}>
 
     <div className={styles.hero}>
@@ -64,6 +67,7 @@ const APIPage = () => (
     </div>
 
   </div>
-);
+  );
+};
 
 export default APIPage;

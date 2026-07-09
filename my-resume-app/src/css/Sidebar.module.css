@@ -7,8 +7,8 @@
     position: fixed;
     top: 60px;
     right: 0;
-    z-index: 10;
-    font-family: 'Inter', sans-serif;
+    z-index: var(--z-above);
+    font-family: var(--font-display);
 }
 
 .sidebarList {
@@ -23,7 +23,7 @@
 
 .sidebarList li::before {
     content: '•';
-    color: #38bdf8;
+    color: var(--link);
     display: inline-block;
     width: 10px;
     margin-right: 5px;
@@ -35,7 +35,7 @@
 
 .sidebarList li a {
     text-decoration: none;
-    color: #38bdf8;
+    color: var(--link);
     font-weight: bold;
     display: inline-block;
     vertical-align: middle;
@@ -43,14 +43,14 @@
 
 .sidebarList li a:hover {
     text-decoration: underline;
-    color: #7dd3fc;
+    color: var(--link-hover);
 }
 
 @media (max-width: 768px) {
     .sidebar {
         width: 100%;
         border-right: none;
-        border-bottom: 1px solid #1e293b;
+        border-bottom: 1px solid var(--border);
         top: 60px;
         left: 0;
         right: 0;

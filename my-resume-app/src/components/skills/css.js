@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Choose a style
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const GitHubCodeViewer = () => {
+    useDocTitle('CSS');
     const [code1, setCode1] = useState('');
     const [code2, setCode2] = useState('');
     const [code3, setCode3] = useState('');

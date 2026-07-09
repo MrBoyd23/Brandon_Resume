@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from '../../css/SkillPage.module.css';
+import useDocTitle from '../../hooks/useDocTitle';
 
 const promqlCode = `# PromQL queries used in Grafana dashboards for server health monitoring
 
@@ -141,6 +142,7 @@ groups:
           team: systems-eng`;
 
 const Grafana = () => {
+  useDocTitle('Grafana');
   const [activeTab, setActiveTab] = useState('promql');
 
   return (
@@ -183,16 +185,16 @@ const Grafana = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Dashboard Design Principles</h2>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Signal over noise</strong> — A dashboard with 40 panels is worthless.
+            <strong style={{ color: 'var(--accent-soft)' }}>Signal over noise</strong> — A dashboard with 40 panels is worthless.
             I design dashboards around questions: "Is this server healthy right now?" Key metrics front and center,
             details available on drill-down.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Thresholds as context</strong> — Every metric panel has green/yellow/red
+            <strong style={{ color: 'var(--accent-soft)' }}>Thresholds as context</strong> — Every metric panel has green/yellow/red
             thresholds so operators can read health status at a glance without knowing the underlying numbers.
           </p>
           <p className={styles.sectionText}>
-            <strong style={{ color: '#93c5fd' }}>Templating for scale</strong> — Dashboard variables allow a single
+            <strong style={{ color: 'var(--accent-soft)' }}>Templating for scale</strong> — Dashboard variables allow a single
             dashboard to display any server, region, or cluster. One dashboard design serves the entire fleet.
           </p>
           <div className={styles.tipBox}>
