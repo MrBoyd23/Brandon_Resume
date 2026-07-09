@@ -104,7 +104,7 @@ build runs. The docx file is bundled into `build/` automatically.
 ### Deploy
 
 ```bash
-cp -r build/* /var/www/resume/
+cp -r build/* /var/www/resume
 sudo nginx -t && sudo nginx -s reload
 ```
 
