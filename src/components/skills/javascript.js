@@ -12,7 +12,7 @@ const JavaScript = () => {
 
     useEffect(() => {
         const fetchFiles = async () => {
-            const repositoryUrl = 'https://api.github.com/repos/MrBoyd23/Projects/contents/my-resume-app/src/components';
+            const repositoryUrl = `${process.env.REACT_APP_GITHUB_API_BASE}/repos/${process.env.REACT_APP_GITHUB_REPO}/contents/src/components`;
             try {
                 const response = await fetch(repositoryUrl);
                 if (response.ok) {
@@ -32,7 +32,7 @@ const JavaScript = () => {
 
     useEffect(() => {
         const fetchSkillsFiles = async () => {
-            const skillsFolderUrl = 'https://api.github.com/repos/MrBoyd23/Projects/contents/my-resume-app/src/components/skills';
+            const skillsFolderUrl = `${process.env.REACT_APP_GITHUB_API_BASE}/repos/${process.env.REACT_APP_GITHUB_REPO}/contents/src/components/skills`;
             try {
                 const response = await fetch(skillsFolderUrl);
                 if (response.ok) {
