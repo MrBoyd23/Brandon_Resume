@@ -100,6 +100,47 @@ const faviconFor = (url) => {
 };
 
 /**
+ * SiteFavicon — renders a site's favicon, falling back to an inline globe glyph
+ * (tinted to the gold --accent) when the image 404s or the URL is unparseable.
+ * The fallback is self-contained SVG, so it never triggers another network
+ * request that could itself fail (THALAB-810).
+ */
+const SiteFavicon = ({ url }) => {
+  const src = faviconFor(url);
+  const [failed, setFailed] = useState(!src);
+
+  if (failed) {
+    return (
+      <svg
+        className={`${styles.siteFavicon} ${styles.siteFaviconFallback}`}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+        <path d="M12 3c2.5 2.4 3.9 5.6 4 9-.1 3.4-1.5 6.6-4 9-2.5-2.4-3.9-5.6-4-9 .1-3.4 1.5-6.6 4-9Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <img
+      className={styles.siteFavicon}
+      src={src}
+      alt=""
+      width="22"
+      height="22"
+      loading="lazy"
+      onError={() => setFailed(true)}
+    />
+  );
+};
+
+/**
  * Skills — shows Coding and Software categories inline with expandable
  * skill bubbles. No separate navigation click required.
  */
@@ -168,15 +209,7 @@ const Skills = () => {
           {sites.map(site => (
             <div key={site.name} className={styles.siteCard}>
               <div className={styles.siteCardHead}>
-                <img
-                  className={styles.siteFavicon}
-                  src={faviconFor(site.url)}
-                  alt=""
-                  width="22"
-                  height="22"
-                  loading="lazy"
-                  onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }}
-                />
+                <SiteFavicon url={site.url} />
                 <h3 className={styles.siteCardName}>{site.name}</h3>
               </div>
               <p className={styles.siteCardDesc}>{site.desc}</p>

@@ -376,6 +376,10 @@
   border-radius: var(--radius-2);
   flex-shrink: 0;
 }
+/* Inline globe shown when a site's favicon fails to load (THALAB-810). */
+.siteFaviconFallback {
+  color: var(--accent);
+}
 .siteCardLink {
   display: inline-flex;
   align-items: center;

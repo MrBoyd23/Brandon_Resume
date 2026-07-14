@@ -18,7 +18,9 @@ export default defineConfig({
   // Keep the existing REACT_APP_* env convention (now exposed via import.meta.env).
   envPrefix: 'REACT_APP_',
   server: {
-    port: 3000,
+    // 3210 is the standing local review port for this site; 3000 is taken by the Plex_App backend.
+    port: 3210,
+    strictPort: true,
     // Mirror CRA's "proxy": forward API calls to the Express backend.
     proxy: { '/api': 'http://localhost:5000' },
   },
