@@ -36,6 +36,11 @@ coverage/
 # Source maps (optional — remove this line if you want source maps committed)
 *.map
 
+# QR tracking database
+server/qr.db
+server/qr.db-wal
+server/qr.db-shm
+
 # Claude Code
 CLAUDE.md
 .claude/

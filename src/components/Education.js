@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../css/Education.module.css';
+import aiCompetencies from '../data/aiCompetencies';
 import useDocTitle from '../hooks/useDocTitle';
 
 const Education = () => {
@@ -45,4 +46,23 @@ const Education = () => {
   );
 };
 
+const AiAutomation = () => (
+  <div className={styles.aiSection}>
+    <h2 className={styles.heading}>AI &amp; Automation</h2>
+    <div className={styles.aiGrid}>
+      {aiCompetencies.map(item => (
+        <div key={item.title} className={styles.aiCard}>
+          <h3 className={styles.aiCardTitle}>{item.title}</h3>
+          <ul className={styles.aiCardList}>
+            {item.bullets.map((bullet, i) => (
+              <li key={i}>{bullet}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
 export default Education;
+export { AiAutomation };

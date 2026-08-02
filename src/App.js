@@ -13,7 +13,9 @@ const Skills = lazy(() => import('./components/Skills'));
 const Coding = lazy(() => import('./components/Coding'));
 const Software = lazy(() => import('./components/Software'));
 const Education = lazy(() => import('./components/Education'));
+const AiAutomation = lazy(() => import('./components/Education').then(m => ({ default: m.AiAutomation })));
 const Certifications = lazy(() => import('./components/Certifications'));
+const QrCode = lazy(() => import('./components/QrCode'));
 
 // Lazy-load custom skill components — only fetched when that route is visited
 const customComponents = {
@@ -95,7 +97,7 @@ function App() {
               {/* Top-level section routes */}
               <Route path="/"             element={<Experience />} />
               <Route path="/experience/*" element={<ErrorBoundary><Suspense fallback={<PageLoader />}><Skills /></Suspense></ErrorBoundary>} />
-              <Route path="/education/*"  element={<ErrorBoundary><Suspense fallback={<PageLoader />}><div className="education-page"><Education /><Certifications /></div></Suspense></ErrorBoundary>} />
+              <Route path="/education/*"  element={<ErrorBoundary><Suspense fallback={<PageLoader />}><div className="education-page"><Education /><div><Certifications /><QrCode /></div></div><AiAutomation /></Suspense></ErrorBoundary>} />
               <Route path="/coding/*"     element={<ErrorBoundary><Suspense fallback={<PageLoader />}><Coding /></Suspense></ErrorBoundary>} />
               <Route path="/software/*"   element={<ErrorBoundary><Suspense fallback={<PageLoader />}><Software /></Suspense></ErrorBoundary>} />
 
