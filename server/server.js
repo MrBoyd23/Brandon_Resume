@@ -17,6 +17,9 @@ const express    = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const puppeteer  = require('puppeteer');
+const crypto     = require('crypto');
+const Database   = require('better-sqlite3');
+const path       = require('path');
 const { buildResumeHTML } = require('../resume-builder');
 
 const app  = express();
@@ -43,6 +46,50 @@ if (DT_URL && DT_TOKEN) {
       body: JSON.stringify({ site: "resume" }),
     }).catch(() => {});
   }, 300000);
+}
+
+// ── QR tracking database ───────────────────────────────────────
+const QR_IP_SALT = process.env.QR_IP_SALT || 'dev-salt-change-me';
+const db = new Database(path.resolve(__dirname, 'qr.db'));
+db.pragma('journal_mode = WAL');
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS qr_target (
+    slug        TEXT PRIMARY KEY,
+    destination TEXT NOT NULL,
+    label       TEXT,
+    created_at  TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+  CREATE TABLE IF NOT EXISTS qr_scan (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    slug        TEXT    NOT NULL,
+    scanned_at  TEXT    NOT NULL DEFAULT (datetime('now')),
+    ip_hash     TEXT,
+    user_agent  TEXT,
+    referer     TEXT,
+    is_bot      INTEGER NOT NULL DEFAULT 0,
+    country     TEXT
+  );
+  CREATE INDEX IF NOT EXISTS idx_qr_scan_slug ON qr_scan(slug);
+  CREATE INDEX IF NOT EXISTS idx_qr_scan_time ON qr_scan(scanned_at);
+`);
+
+const seedTarget = db.prepare(
+  'INSERT OR IGNORE INTO qr_target (slug, destination, label) VALUES (?, ?, ?)'
+);
+seedTarget.run('linkedin', 'https://www.linkedin.com/in/brandonaboyd/', 'LinkedIn profile');
+seedTarget.run('card', 'https://resume.brandonaboyd.com/', 'Business card');
+
+const targetLookup = db.prepare('SELECT destination FROM qr_target WHERE slug = ?');
+const scanInsert = db.prepare(
+  'INSERT INTO qr_scan (slug, ip_hash, user_agent, referer, is_bot, country) VALUES (?, ?, ?, ?, ?, ?)'
+);
+
+const BOT_MARKERS = /bot|crawl|spider|slurp|wget|curl|python|java|go-http|httpclient|fetch|headless|phantom|puppeteer|lighthouse|pagespeed|pingdom|uptimerobot|slackbot|discordbot|facebookexternalhit|twitterbot|whatsapp|linkedinbot|telegrambot|preview/i;
+
+function hashIP(ip) {
+  if (!ip) return null;
+  return crypto.createHash('sha256').update(ip + QR_IP_SALT).digest('hex').slice(0, 16);
 }
 
 // ── Middleware ──────────────────────────────────────────────────
@@ -117,6 +164,60 @@ app.post('/api/contact', async (req, res) => {
       context: { endpoint: "/api/contact", method: "POST" },
     });
     res.status(500).json({ error: 'Failed to send email. Please try again later.' });
+  }
+});
+
+// ── GET /q/:slug — QR code redirect with scan logging ───────────
+app.get('/q/:slug', (req, res) => {
+  const { slug } = req.params;
+  const row = targetLookup.get(slug);
+
+  if (!row) {
+    res.status(404).json({ error: 'Unknown QR code' });
+    return;
+  }
+
+  try {
+    const rawIP = req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.ip;
+    const ua = (req.headers['user-agent'] || '').slice(0, 512);
+    const ref = (req.headers['referer'] || '').slice(0, 512);
+    const country = req.headers['cf-ipcountry'] || null;
+    const isBot = BOT_MARKERS.test(ua) ? 1 : 0;
+    scanInsert.run(slug, hashIP(rawIP), ua, ref, isBot, country);
+  } catch (err) {
+    console.error('QR scan log failed:', err.message);
+    reportError('resume', err.message, {
+      error_type: err.name, traceback: err.stack,
+      context: { endpoint: `/q/${slug}`, method: 'GET' },
+    });
+  }
+
+  res.set('Cache-Control', 'no-store');
+  res.redirect(302, row.destination);
+});
+
+// ── GET /api/qr/stats — scan analytics summary ─────────────────
+app.get('/api/qr/stats', (req, res) => {
+  try {
+    const targets = db.prepare(
+      'SELECT slug, destination, label, created_at FROM qr_target'
+    ).all();
+    const summary = db.prepare(`
+      SELECT slug,
+             COUNT(*) AS total_scans,
+             SUM(CASE WHEN is_bot = 0 THEN 1 ELSE 0 END) AS human_scans,
+             SUM(CASE WHEN is_bot = 1 THEN 1 ELSE 0 END) AS bot_scans,
+             MAX(scanned_at) AS last_scan
+      FROM qr_scan GROUP BY slug
+    `).all();
+    res.json({ targets, summary });
+  } catch (err) {
+    console.error('QR stats query failed:', err.message);
+    reportError('resume', err.message, {
+      error_type: err.name, traceback: err.stack,
+      context: { endpoint: '/api/qr/stats', method: 'GET' },
+    });
+    res.status(500).json({ error: 'Failed to fetch QR stats' });
   }
 });
 

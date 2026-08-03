@@ -22,7 +22,10 @@ export default defineConfig({
     port: 3210,
     strictPort: true,
     // Mirror CRA's "proxy": forward API calls to the Express backend.
-    proxy: { '/api': 'http://localhost:5000' },
+    proxy: {
+      '/api': 'http://localhost:5000',
+      '/q/':  'http://localhost:5000',
+    },
   },
   build: {
     outDir: 'build', // match the nginx static root + existing deploy scripts

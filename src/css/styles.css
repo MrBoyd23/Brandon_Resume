@@ -639,6 +639,12 @@ select:focus-visible {
   width: 100%;
 }
 
+.education-page > div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
 @media (max-width: 820px) {
   .education-page {
     grid-template-columns: 1fr;
