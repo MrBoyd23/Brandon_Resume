@@ -1,58 +1,58 @@
 /* Sidebar.module.css */
 
 .sidebar {
-    width: 200px;
-    background-color: transparent;
-    padding: 20px;
-    position: fixed;
-    top: 60px;
-    right: 0;
-    z-index: var(--z-above);
-    font-family: var(--font-display);
+  width: 100%;
+  background-color: transparent;
+  padding: 20px;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: var(--z-above);
+  font-family: var(--font-display);
+  border-bottom: 1px solid var(--border);
 }
 
 .sidebarList {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .sidebarList li {
-    margin-bottom: 10px;
-    position: relative;
+  margin-bottom: 10px;
+  position: relative;
 }
 
 .sidebarList li::before {
-    content: '•';
-    color: var(--link);
-    display: inline-block;
-    width: 10px;
-    margin-right: 5px;
-    position: absolute;
-    left: -15px;
-    top: 50%;
-    transform: translateY(-50%);
+  content: '•';
+  color: var(--link);
+  display: inline-block;
+  width: 10px;
+  margin-right: 5px;
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .sidebarList li a {
-    text-decoration: none;
-    color: var(--link);
-    font-weight: bold;
-    display: inline-block;
-    vertical-align: middle;
+  text-decoration: none;
+  color: var(--link);
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .sidebarList li a:hover {
-    text-decoration: underline;
-    color: var(--link-hover);
+  text-decoration: underline;
+  color: var(--link-hover);
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        top: 60px;
-        left: 0;
-        right: 0;
-    }
+@media (min-width: 768px) {
+  .sidebar {
+    width: 200px;
+    right: 0;
+    left: auto;
+    border-bottom: none;
+  }
 }

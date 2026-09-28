@@ -4,7 +4,7 @@
 .education {
   width: 100%;
   position: relative;
-  padding-left: 24px;
+  padding-left: 18px;
 }
 
 /* ── Page heading ─────────────────────────────────────────── */
@@ -39,7 +39,7 @@
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
   border-radius: 0 12px 12px 0;
-  padding: 28px 32px;
+  padding: 20px 22px;
   margin-bottom: 24px;
   transition: border-left-color 0.25s, box-shadow 0.25s;
 }
@@ -53,7 +53,7 @@
 .educationItem::before {
   content: '';
   position: absolute;
-  left: -33px;
+  left: -27px;
   top: 32px;
   width: 10px;
   height: 10px;
@@ -66,7 +66,7 @@
 /* ── School name ──────────────────────────────────────────── */
 .schoolName {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--text);
   margin: 0 0 6px;
@@ -164,12 +164,12 @@
   letter-spacing: 0.3px;
 }
 
-/* ── Responsive ───────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .educationItem { padding: 20px 22px; }
-  .schoolName { font-size: 1.15rem; }
-  .education { padding-left: 18px; }
-  .educationItem::before { left: -27px; }
+/* ── Responsive (mobile-first) ─────────────────────────────── */
+@media (min-width: 768px) {
+  .education { padding-left: 24px; }
+  .educationItem { padding: 22px 26px; }
+  .educationItem::before { left: -33px; }
+  .schoolName { font-size: 1.4rem; }
 }
 
 /* ── Inline label + pill row (THALAB-717) — no orphaned pills ── */
@@ -184,9 +184,7 @@
   white-space: nowrap;
 }
 
-/* Compact cards to remove dead space in the two-column layout */
 .educationItem {
-  padding: 22px 26px;
   margin-bottom: 20px;
 }
 
@@ -198,12 +196,12 @@
 
 .aiGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
-@media (max-width: 768px) {
-  .aiGrid { grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .aiGrid { grid-template-columns: 1fr 1fr; }
 }
 
 .aiCard {

@@ -4,7 +4,7 @@
 .certifications {
   width: 100%;
   position: relative;
-  padding-left: 24px;
+  padding-left: 18px;
   margin-top: 0;
 }
 
@@ -40,7 +40,7 @@
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
   border-radius: 0 12px 12px 0;
-  padding: 24px 32px;
+  padding: 20px 22px;
   margin-bottom: 24px;
   transition: border-left-color 0.25s, box-shadow 0.25s;
 }
@@ -54,7 +54,7 @@
 .certificationItem::before {
   content: '';
   position: absolute;
-  left: -33px;
+  left: -27px;
   top: 28px;
   width: 10px;
   height: 10px;
@@ -67,7 +67,7 @@
 /* ── Certification title ─────────────────────────────────── */
 .certificationTitle {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--text);
   margin: 0 0 8px;
@@ -114,10 +114,10 @@
   content: none;
 }
 
-/* ── Responsive ──────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .certificationItem { padding: 20px 22px; }
-  .certificationTitle { font-size: 1.05rem; }
-  .certifications { padding-left: 18px; }
-  .certificationItem::before { left: -27px; }
+/* ── Responsive (mobile-first) ─────────────────────────────── */
+@media (min-width: 768px) {
+  .certifications { padding-left: 24px; }
+  .certificationItem { padding: 24px 32px; }
+  .certificationItem::before { left: -33px; }
+  .certificationTitle { font-size: 1.2rem; }
 }

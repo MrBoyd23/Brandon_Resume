@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../css/Skills.module.css';
-import { codingSkills, softwareSkills } from '../data/skillsConfig';
+import { codingSkills, softwareSkills } from '../config/skillsConfig';
 import useDocTitle from '../hooks/useDocTitle';
 
 const projects = [
@@ -18,7 +18,7 @@ const projects = [
     ],
   },
   {
-    title: 'MWPv2 Platform Access & Management',
+    title: 'Managed WordPress Platform Access & Management',
     subtitle: 'Operations-level management including DDoS defense, observability, and team enablement.',
     bullets: [
       'Managed the platform as primary point of contact for health and incident response.',
@@ -54,6 +54,13 @@ const sites = [
   { name: 'RJPJ2020.com', url: 'http://rjpj2020.com/', desc: 'Wedding website celebrating the union of Richard & Polli Jones.' },
   { name: 'BrandonABoyd.com', url: 'http://brandonaboyd.com/', desc: 'A family website bringing together moments, memories, and milestones shared with my kids.' },
   { name: 'RachelIGarcia.com', url: 'http://racheligarcia.com/', desc: 'A heartfelt tribute dedicated to the life and legacy of Rachel Irene Garcia.', favicon: '/favicons/racheligarcia.svg' },
+  { name: 'Valley Roadwork', url: 'https://traffic.phoenixazevents.com/', desc: 'Real-time interactive map of road closures and construction permits across Maricopa and Pinal counties.' },
+  { name: 'MovieTrivia', url: 'https://movietrivia.askaboutmedia.com/', desc: 'Sourced film and television trivia with citations from TMDb, Wikidata, and Wikipedia.', favicon: '/favicons/movietrivia.svg' },
+  { name: 'AisleWise', url: 'https://groceries.askaboutmedia.com/', desc: 'Grocery receipt tracker that compares store prices and provides AI-powered shopping insights.' },
+  { name: "What's Cookin", url: 'https://recipes.askaboutmedia.com/', desc: 'Personal recipe collection with search and filtering by difficulty, meal type, cuisine, and cooking time.', favicon: '/favicons/whatscookin.svg' },
+  { name: 'Game Stats', url: 'http://gamestats.askaboutmedia.com/', desc: 'Sports dashboard with real-time game data, AI-powered betting analysis, and educational wagering guides.' },
+  { name: 'ITNext', url: 'https://jobs.askaboutmedia.com/', desc: 'IT job intelligence dashboard with job tracking, search, and API-powered employment insights.', favicon: '/favicons/itnext.svg' },
+  { name: 'AllADaStocks', url: 'https://market.askaboutmedia.com/', desc: 'Financial dashboard with real-time market data, analytics, and customizable alerts for stocks, ETFs, and options.', favicon: '/favicons/alladastocks.svg' },
 ];
 
 /** Favicon URL for a site, derived from its hostname. */

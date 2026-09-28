@@ -1,0 +1,11 @@
+[allowlist]
+description = "Resume site allowlist"
+paths = [
+  '''\.env$''',
+  '''build/''',
+  '''node_modules/''',
+  '''server/node_modules/''',
+  '''package-lock\.json$''',
+  '''server/package-lock\.json$''',
+  '''\.playwright-mcp/''',
+]

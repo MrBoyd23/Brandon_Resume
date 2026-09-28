@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { codingSkills, softwareSkills } from '../data/skillsConfig';
+import { codingSkills, softwareSkills } from '../config/skillsConfig';
 import useDocTitle from '../hooks/useDocTitle';
 
 const sectionStyle = {

@@ -81,6 +81,28 @@
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
+
+  /* ── Spacing scale ────────────────────────────────────────── */
+  --space-1: 0.25rem;   /* 4px  */
+  --space-2: 0.5rem;    /* 8px  */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 2.5rem;    /* 40px */
+  --space-8: 3rem;      /* 48px */
+
+  /* ── Transition durations ─────────────────────────────────── */
+  --transition-fast: 150ms;
+  --transition-base: 250ms;
+  --transition-slow: 400ms;
+
+  /* ── Breakpoints (reference — CSS can't use vars in queries) ─
+     --bp-sm: 480px   (large phones)
+     --bp-md: 768px   (tablets)
+     --bp-lg: 1024px  (laptops/desktops)
+     --bp-xl: 1280px  (wide screens)
+     ────────────────────────────────────────────────────────── */
 }
 
 /* Fonts loaded via index.html <link> tags — no @import needed here */
@@ -121,7 +143,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  padding: 30px 40px;
+  padding: 16px 18px;
   box-sizing: border-box;
   background: var(--bg);
   margin: 0 auto;
@@ -135,7 +157,7 @@ h1, h2, h3, h4 {
 }
 
 h2, .container h2 {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   margin-bottom: 14px;
   color: var(--text);
   border-bottom: 2px solid var(--accent);
@@ -160,8 +182,9 @@ a:hover { color: var(--link-hover); }
 
 /* ── Buttons ───────────────────────────────────────────────── */
 button {
+  width: 100%;
   padding: 8px 16px;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-family: var(--font-body);
   font-weight: 500;
   margin: 5px;
@@ -179,6 +202,11 @@ button:hover {
   border-color: var(--accent-hover);
   box-shadow: 0 2px 12px rgba(var(--accent-rgb),0.3);
   transform: translateY(-1px);
+}
+
+/* ── Touch targets (44px min per WCAG / Apple HIG) ────────── */
+a, button, [role="button"], summary {
+  min-height: 44px;
 }
 
 /* ── Playbook / code viewer buttons ────────────────────────── */
@@ -245,7 +273,7 @@ ul li::before {
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
   border-radius: 0 10px 10px 0;
-  padding: 24px 28px;
+  padding: 18px 16px;
   margin-bottom: 24px;
   transition: border-left-color 0.25s, box-shadow 0.25s;
 }
@@ -271,7 +299,7 @@ ul li::before {
 
 .job h3 {
   margin: 0 0 4px;
-  font-size: 1.35rem;
+  font-size: 1.1rem;
   color: var(--text);
   font-family: var(--font-display);
   font-weight: 600;
@@ -439,37 +467,22 @@ ul li::before {
   color: var(--text-secondary);
 }
 
-/* ── Responsive ────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .container {
-    padding: 16px 18px;
-  }
+/* ── Responsive (mobile-first) ─────────────────────────────── */
 
-  .experience {
-    padding-left: 14px;
-  }
+/* Base styles above ARE the mobile styles (container padding, etc.) */
 
-  .job {
-    padding: 18px 16px;
-  }
-
-  .job h3 { font-size: 1.1rem; }
-
-  h2, .container h2 { font-size: 1.3rem; }
-
-  button { width: 100%; font-size: 0.85rem; }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) {
   .container { padding: 20px 28px; }
+  .experience { padding-left: 30px; }
+  .job { padding: 24px 28px; }
+  .job h3 { font-size: 1.5rem; }
   h2, .container h2 { font-size: 1.45rem; }
   button { width: auto; font-size: 0.88rem; }
 }
 
-@media (min-width: 1025px) {
-  .container { max-width: 1400px; }
+@media (min-width: 1024px) {
+  .container { max-width: 1400px; padding: 30px 40px; }
   h2, .container h2 { font-size: 1.6rem; }
-  button { width: auto; }
 }
 
 /* ============================================================
@@ -553,7 +566,7 @@ select:focus-visible {
 
 /* Thicker, brighter gold timeline spine */
 .experience {
-  padding-left: 30px;
+  padding-left: 14px;
 }
 .experience::before {
   left: 3px;
@@ -574,7 +587,6 @@ select:focus-visible {
 
 /* Card title dominance + gold company */
 .job h3 {
-  font-size: 1.5rem;
   letter-spacing: 0.3px;
 }
 .job-meta b {
@@ -633,8 +645,8 @@ select:focus-visible {
    ============================================================ */
 .education-page {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 30px;
+  grid-template-columns: 1fr;
+  gap: 24px;
   align-items: start;
   width: 100%;
 }
@@ -645,9 +657,9 @@ select:focus-visible {
   align-self: stretch;
 }
 
-@media (max-width: 820px) {
+@media (min-width: 768px) {
   .education-page {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
   }
 }

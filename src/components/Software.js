@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from '../css/Skills.module.css';
-import { softwareSkills } from '../data/skillsConfig';
-import preloaders from '../data/skillPreloads';
+import { softwareSkills } from '../config/skillsConfig';
+import preloaders from '../config/skillPreloads';
 
 /**
  * Software — nav bar shown above each software skill detail page.

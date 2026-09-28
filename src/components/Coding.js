@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from '../css/Skills.module.css';
-import { codingSkills } from '../data/skillsConfig';
-import preloaders from '../data/skillPreloads';
+import { codingSkills } from '../config/skillsConfig';
+import preloaders from '../config/skillPreloads';
 
 /**
  * Coding — nav bar shown above each coding skill detail page.

@@ -1,6 +1,13 @@
 {
   "short_name": "Brandon's Resume",
-  "name": "Shortcut To Resume Website",
+  "name": "Brandon Boyd — Resume & Portfolio",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#12121f",
+  "background_color": "#12121f",
   "icons": [
     {
       "src": "favicon.ico",
@@ -16,11 +23,12 @@
       "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "orientation": "portrait",
-  "theme_color": "#0a0f1a",
-  "background_color": "#0a0f1a"
+  ]
 }
