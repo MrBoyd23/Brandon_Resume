@@ -14,7 +14,7 @@
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent);
   border-radius: 0 10px 10px 0;
-  padding: 28px 32px;
+  padding: 20px 18px;
   margin-bottom: 28px;
   position: relative;
   overflow: hidden;
@@ -34,7 +34,7 @@
 
 .heroTitle {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--text);
   margin: 0 0 8px;
@@ -74,7 +74,7 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 24px 28px;
+  padding: 18px 16px;
   margin-bottom: 22px;
   transition: border-color 0.25s;
 }
@@ -116,13 +116,13 @@
 /* ── Two-column grid ───────────────────────────────────────── */
 .twoCol {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 22px;
   margin-bottom: 22px;
 }
 
-@media (max-width: 768px) {
-  .twoCol { grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .twoCol { grid-template-columns: 1fr 1fr; }
 }
 
 /* ── Code block wrapper ────────────────────────────────────── */
@@ -176,7 +176,7 @@
   border: 1px solid var(--border);
   background: var(--surface);
   border-radius: var(--radius-md);
-  padding: 24px 28px;
+  padding: 18px 16px;
   margin-bottom: 22px;
 }
 
@@ -215,7 +215,7 @@
 /* ── Cards grid (for live API results) ─────────────────────── */
 .cardsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
   gap: 14px;
 }
 
@@ -396,11 +396,11 @@
   border-color: rgba(var(--accent-rgb), 0.45);
 }
 
-/* ── Responsive ────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .hero { padding: 20px 18px; }
-  .heroTitle { font-size: 1.5rem; }
-  .section { padding: 18px 16px; }
-  .liveSection { padding: 18px 16px; }
-  .cardsGrid { grid-template-columns: 1fr; }
+/* ── Responsive (mobile-first) ─────────────────────────────── */
+@media (min-width: 768px) {
+  .hero { padding: 28px 32px; }
+  .heroTitle { font-size: 2rem; }
+  .section { padding: 24px 28px; }
+  .liveSection { padding: 24px 28px; }
+  .cardsGrid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 }

@@ -1,31 +1,31 @@
-/* HTML.module.css — Premium dark-theme contact form */
+/* HTML.module.css — Contact form aligned to site design tokens */
 
 /* ── Wrapper ──────────────────────────────────────────────── */
 .contactForm {
   max-width: 760px;
   margin: 40px auto 0;
-  background: #0d0d0d;
-  border: 1px solid #1e1e1e;
-  border-top: 3px solid #8b0000;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
   border-radius: 0 0 12px 12px;
-  padding: 36px 40px 40px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  padding: 24px 20px 28px;
+  box-shadow: 0 8px 40px rgba(var(--shadow-rgb), 0.5);
 }
 
 /* ── Heading ─────────────────────────────────────────────── */
 .formHeading {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text);
   margin: 0 0 4px;
   letter-spacing: 0.5px;
 }
 
 .formSubheading {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.78rem;
-  color: #888;
+  color: var(--text-muted);
   margin: 0 0 28px;
   letter-spacing: 0.3px;
 }
@@ -38,12 +38,12 @@
 }
 
 .legend {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #8b0000;
+  color: var(--accent);
   padding: 0;
   margin-bottom: 16px;
   display: flex;
@@ -55,19 +55,19 @@
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, #2d0000, transparent);
+  background: linear-gradient(90deg, var(--border), transparent);
 }
 
-/* ── Two-column row ──────────────────────────────────────── */
+/* ── Two-column row (mobile-first: single column by default) ── */
 .formRow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
-@media (max-width: 560px) {
-  .formRow { grid-template-columns: 1fr; }
-  .contactForm { padding: 24px 20px 28px; }
+@media (min-width: 561px) {
+  .formRow { grid-template-columns: 1fr 1fr; }
+  .contactForm { padding: 36px 40px 40px; }
 }
 
 /* ── Individual field group ──────────────────────────────── */
@@ -84,10 +84,10 @@
 
 /* ── Labels ──────────────────────────────────────────────── */
 .formGroup label {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 600;
-  color: #ccc;
+  color: var(--text-secondary);
   letter-spacing: 0.4px;
   text-transform: uppercase;
   display: flex;
@@ -96,7 +96,7 @@
 }
 
 .required {
-  color: #cc3333;
+  color: var(--danger);
   font-size: 0.8rem;
   line-height: 1;
 }
@@ -109,12 +109,12 @@
 .formGroup select {
   width: 100%;
   padding: 11px 14px;
-  background: #111;
-  border: 1px solid #2a2a2a;
-  border-bottom: 2px solid #3d0000;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--accent-strong);
   border-radius: 6px;
-  color: #eee;
-  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  font-family: var(--font-body);
   font-size: 0.875rem;
   box-sizing: border-box;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
@@ -124,31 +124,31 @@
 
 .formGroup input::placeholder,
 .formGroup textarea::placeholder {
-  color: #444;
+  color: var(--text-dim);
   font-size: 0.82rem;
 }
 
 .formGroup input:focus,
 .formGroup textarea:focus,
 .formGroup select:focus {
-  border-color: #8b0000;
-  border-bottom-color: #cc0000;
-  background: #161616;
-  box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.15), 0 2px 8px rgba(139, 0, 0, 0.1);
+  border-color: var(--accent);
+  border-bottom-color: var(--accent-hover);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15), 0 2px 8px rgba(var(--accent-rgb), 0.1);
 }
 
 /* Select arrow */
 .formGroup select {
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238b0000' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4a849' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   padding-right: 38px;
 }
 
 .formGroup select option {
-  background: #1a0000;
-  color: #eee;
+  background: var(--surface-2);
+  color: var(--text);
 }
 
 /* Textarea */
@@ -165,8 +165,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #111;
-  border: 1px dashed #2d0000;
+  background: var(--bg);
+  border: 1px dashed var(--border);
   border-radius: 6px;
   padding: 12px 14px;
   cursor: pointer;
@@ -174,46 +174,46 @@
 }
 
 .fileWrapper:hover {
-  border-color: #8b0000;
-  background: #161616;
+  border-color: var(--accent);
+  background: var(--surface);
 }
 
 .fileWrapper input[type='file'] {
   flex: 1;
   background: transparent;
   border: none;
-  color: #aaa;
+  color: var(--text-muted);
   font-size: 0.8rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   cursor: pointer;
   padding: 0;
   box-shadow: none;
 }
 
 .fileIcon {
-  color: #8b0000;
+  color: var(--accent);
   font-size: 1.1rem;
   flex-shrink: 0;
 }
 
 .fileName {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.75rem;
-  color: #40e0d0;
+  color: var(--link);
   margin-top: 4px;
 }
 
 /* ── Char counter ────────────────────────────────────────── */
 .charCount {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.68rem;
-  color: #555;
+  color: var(--text-dim);
   text-align: right;
   margin-top: 2px;
 }
 
-.charCountWarn { color: #cc8800; }
-.charCountOver { color: #cc3333; }
+.charCountWarn { color: var(--accent-hover); }
+.charCountOver { color: var(--danger); }
 
 /* ── reCAPTCHA row ───────────────────────────────────────── */
 .captchaRow {
@@ -230,12 +230,12 @@
   gap: 8px;
   width: 100%;
   padding: 13px 24px;
-  background: linear-gradient(135deg, #7a0000, #b00000);
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
   border: none;
   border-radius: 6px;
-  border-bottom: 3px solid #500000;
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
+  border-bottom: 3px solid var(--accent-strong);
+  color: var(--text);
+  font-family: var(--font-body);
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 1.5px;
@@ -255,9 +255,9 @@
 }
 
 .submitBtn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #950000, #cc0000);
-  border-bottom-color: #600000;
-  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  border-bottom-color: var(--accent-strong);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.4);
   transform: translateY(-1px);
 }
 
@@ -272,13 +272,13 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background: rgba(0, 80, 0, 0.15);
-  border: 1px solid rgba(0, 200, 0, 0.25);
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.2);
   border-radius: 8px;
   padding: 16px 20px;
   margin-top: 20px;
-  color: #66dd66;
-  font-family: 'Poppins', sans-serif;
+  color: #4ade80;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   line-height: 1.5;
 }
@@ -287,13 +287,13 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background: rgba(100, 0, 0, 0.2);
-  border: 1px solid rgba(200, 0, 0, 0.3);
+  background: rgba(var(--danger-rgb), 0.1);
+  border: 1px solid rgba(var(--danger-rgb), 0.2);
   border-radius: 8px;
   padding: 16px 20px;
   margin-top: 20px;
-  color: #ff8888;
-  font-family: 'Poppins', sans-serif;
+  color: var(--danger);
+  font-family: var(--font-body);
   font-size: 0.85rem;
   line-height: 1.5;
 }

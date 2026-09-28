@@ -6,7 +6,7 @@
   top: 0;
   z-index: var(--z-header);
   text-align: center;
-  padding: 16px 30px 18px;
+  padding: 12px 16px 14px;
   background: linear-gradient(160deg, var(--surface-2) 0%, var(--surface-accent) 45%, var(--surface-2) 100%);
   color: var(--text);
   font-family: var(--font-display);
@@ -44,7 +44,7 @@
 
 .header h1 {
   font-family: var(--font-display);
-  font-size: var(--fs-hero);
+  font-size: 1.3rem;
   line-height: 1.05;
   margin: 0 0 2px;
   font-weight: var(--fw-bold);
@@ -56,10 +56,10 @@
 }
 
 .header h2 {
-  font-size: 0.82rem;
-  margin: 0 0 10px;
+  font-size: 0.6rem;
+  margin: 0 0 12px;
   font-weight: 500;
-  letter-spacing: 5px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--accent-soft);
   font-family: var(--font-mono);
@@ -74,7 +74,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   flex-wrap: wrap;
   position: relative;
   z-index: var(--z-base);
@@ -104,10 +104,10 @@
   color: rgba(var(--text-muted-rgb), 0.8);
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 1.5px;
+  font-size: 0.64rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 10px 20px;
+  padding: 8px 12px;
   border: none;
   background: transparent;
   transition: color 0.25s ease;
@@ -121,6 +121,7 @@
   font-size: 0.85rem;
   opacity: 0.7;
   line-height: 1;
+  display: none;
 }
 
 .navLabel {
@@ -175,17 +176,17 @@
   text-decoration: none;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.72rem;
+  font-size: 0.64rem;
   letter-spacing: 1.2px;
   text-transform: uppercase;
   white-space: nowrap;
-  padding: 8px 16px;
+  padding: 7px 12px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--accent);
   background: linear-gradient(135deg, var(--surface-accent), var(--accent-strong));
   color: var(--text);
   transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
-  margin-left: 8px;
+  margin-left: 4px;
 }
 
 .navDownload:hover {
@@ -201,16 +202,19 @@
   line-height: 1;
 }
 
-/* ── Responsive ────────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .header { padding: 12px 16px 14px; }
-  .header h1 { font-size: 1.3rem; letter-spacing: 1.5px; }
-  .header h2 { font-size: 0.6rem; letter-spacing: 2.5px; margin-bottom: 12px; }
-  .navLink { font-size: 0.64rem; padding: 8px 12px; letter-spacing: 1px; }
-  .navDownload { font-size: 0.64rem; padding: 7px 12px; margin-left: 4px; }
-  .navList { gap: 2px; }
+/* ── Responsive (mobile-first) ─────────────────────────────── */
+
+/* ── Extra-small: hide nav icons below 480px ─────────────── */
+@media (min-width: 480px) {
+  .navIcon { display: inline; }
 }
 
-@media (max-width: 380px) {
-  .navIcon { display: none; }
+/* ── Tablet+ ─────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .header { padding: 16px 30px 18px; }
+  .header h1 { font-size: var(--fs-hero); letter-spacing: 2.5px; }
+  .header h2 { font-size: 0.82rem; letter-spacing: 5px; margin-bottom: 10px; }
+  .navLink { font-size: 0.75rem; padding: 10px 20px; letter-spacing: 1.5px; }
+  .navDownload { font-size: 0.72rem; padding: 8px 16px; margin-left: 8px; }
+  .navList { gap: 4px; }
 }

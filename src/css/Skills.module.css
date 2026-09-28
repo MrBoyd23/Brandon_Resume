@@ -20,13 +20,13 @@
 /* ── Two-column category layout ────────────────────────────── */
 .categoriesRow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 24px;
   width: 100%;
 }
 
-@media (max-width: 700px) {
-  .categoriesRow { grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .categoriesRow { grid-template-columns: 1fr 1fr; }
 }
 
 /* ── Category accordion block ──────────────────────────────── */
@@ -83,9 +83,9 @@
 /* ── Skill bubbles grid ─────────────────────────────────────── */
 .skillsList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 9px;
-  padding: 18px 20px 22px;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 7px;
+  padding: 14px 16px 18px;
   align-items: start;
   width: 100%;
   box-sizing: border-box;
@@ -100,12 +100,12 @@
 
   background: linear-gradient(135deg, var(--surface-2), var(--surface-accent));
   color: rgba(var(--text-rgb), 0.92);
-  padding: 8px 10px;
+  padding: 7px 8px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--accent);
   border-bottom: 2px solid var(--surface-accent);
 
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   font-family: var(--font-body);
   font-weight: 500;
   text-decoration: none;
@@ -174,12 +174,12 @@
 
 .projectsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
-@media (max-width: 768px) {
-  .projectsGrid { grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .projectsGrid { grid-template-columns: 1fr 1fr; }
 }
 
 .projectCard {
@@ -306,19 +306,15 @@
   color: var(--link-hover);
 }
 
-/* ── Mobile ────────────────────────────────────────────────── */
-@media (max-width: 768px) {
+/* ── Responsive (mobile-first) ─────────────────────────────── */
+@media (min-width: 768px) {
   .skillsList {
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 7px;
-    padding: 14px 16px 18px;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 9px;
+    padding: 18px 20px 22px;
   }
-  .skillBubble { font-size: 0.7rem; padding: 7px 8px; }
-  .categoryTitle { font-size: 1rem; }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .skillBubble { font-size: 0.72rem; }
+  .skillBubble { font-size: 0.74rem; padding: 8px 10px; }
+  .categoryTitle { font-size: 1.1rem; }
 }
 
 /* ============================================================
