@@ -6,7 +6,7 @@ import Experience from './components/Experience';
 import NotFound from './components/NotFound';
 import PageLoader from './components/PageLoader';
 import ErrorBoundary from './components/ErrorBoundary';
-import { allSkills, CUSTOM_SKILL_IDS } from './data/skillsConfig';
+import { allSkills, CUSTOM_SKILL_IDS } from './config/skillsConfig';
 
 // Lazy-load non-homepage route components — only fetched when navigated to
 const Skills = lazy(() => import('./components/Skills'));
@@ -50,6 +50,10 @@ const customComponents = {
   online_marketing:   lazy(() => import('./components/skills/online_marketing')),
   data_analytics:     lazy(() => import('./components/skills/data_analytics')),
   ai_development:     lazy(() => import('./components/skills/ai_development')),
+  ollama:             lazy(() => import('./components/skills/ollama')),
+  prompt_engineering: lazy(() => import('./components/skills/prompt_engineering')),
+  sqlite:             lazy(() => import('./components/skills/sqlite')),
+  homelab:            lazy(() => import('./components/skills/homelab')),
   splunk:             lazy(() => import('./components/skills/splunk')),
   nginx:              lazy(() => import('./components/skills/nginx')),
   cloudflare:         lazy(() => import('./components/skills/cloudflare')),
@@ -83,7 +87,7 @@ const PageTracker = () => {
 };
 
 // Main App — skill routes are auto-generated from skillsConfig
-// To add a new skill: add an entry to src/data/skillsConfig.js only
+// To add a new skill: add an entry to src/config/skillsConfig.js only
 function App() {
   return (
     <Router>

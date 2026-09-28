@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../css/Education.module.css';
-import aiCompetencies from '../data/aiCompetencies';
+import aiCompetencies from '../config/aiCompetencies';
 import useDocTitle from '../hooks/useDocTitle';
 
 const Education = () => {

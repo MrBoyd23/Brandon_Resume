@@ -1,5 +1,5 @@
 /**
- * src/data/skillsConfig.js
+ * src/config/skillsConfig.js
  *
  * Single source of truth for all skill definitions.
  * Adding a new skill only requires an entry here — routes, nav bubbles,
@@ -42,6 +42,10 @@ export const CUSTOM_SKILL_IDS = new Set([
   'online_marketing',
   'data_analytics',
   'ai_development',
+  'ollama',
+  'prompt_engineering',
+  'sqlite',
+  'homelab',
   'splunk',
   'nginx',
   'cloudflare',
@@ -55,8 +59,11 @@ export const CUSTOM_SKILL_IDS = new Set([
 ]);
 
 export const codingSkills = [
-  { id: 'ai_development', label: 'AI Development' },
-  { id: 'python',         label: 'Python'          },
+  { id: 'ai_development',    label: 'AI Development'    },
+  { id: 'ollama',             label: 'Ollama'            },
+  { id: 'prompt_engineering', label: 'Prompt Engineering' },
+  { id: 'sqlite',             label: 'SQLite'            },
+  { id: 'python',             label: 'Python'            },
   { id: 'react',          label: 'React'           },
   { id: 'javascript',     label: 'JavaScript'      },
   { id: 'node',           label: 'Node.js'         },
@@ -78,6 +85,7 @@ export const codingSkills = [
 ];
 
 export const softwareSkills = [
+  { id: 'homelab',            label: 'Self-Hosted Infra'  },
   { id: 'github',            label: 'GitHub'            },
   { id: 'linux_admin',       label: 'Linux Admin'       },
   { id: 'grafana',           label: 'Grafana'           },
