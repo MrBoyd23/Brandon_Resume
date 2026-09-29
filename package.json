@@ -7,8 +7,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
-    "nodemailer": "^9.0.3",
-    "puppeteer": "^22.0.0",
+    "nodemailer": "^10.0.12",
+    "puppeteer": "^25.12.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-google-recaptcha": "^3.1.0",
@@ -37,7 +37,7 @@
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^36.0.1",
     "vite": "^7.3.6",
-    "vitest": "^3.2.7"
+    "vitest": "^5.0.2"
   },
   "overrides": {
     "nth-check": "^2.1.1",
